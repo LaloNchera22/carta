@@ -2,13 +2,23 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#fafffa" />
   <title>Ashley.</title>
-  <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Instrument+Serif:ital@0;1&family=Inter:wght@200;300;400;500&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet" />
+  <!-- Fuentes sin bloquear el render; la segunda solo trae los glifos usados -->
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Instrument+Serif&family=JetBrains+Mono:wght@400&display=swap&text=%20.%60%5E%22%2C%3A%3BIl%21i%3E%3C~%2B_-%3F%5D%5B%7D%7B1%29%28%7C%2FtfjrxnuvczXYUJCLQ0OZmwqpdbkhao%2A%23MW%268%25B%40%24Ashley." />
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Inter:wght@500&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif&family=JetBrains+Mono:wght@400&display=swap&text=%20.%60%5E%22%2C%3A%3BIl%21i%3E%3C~%2B_-%3F%5D%5B%7D%7B1%29%28%7C%2FtfjrxnuvczXYUJCLQ0OZmwqpdbkhao%2A%23MW%268%25B%40%24Ashley." media="print" onload="this.media='all'" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Inter:wght@500&display=swap" media="print" onload="this.media='all'" />
+  <noscript>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif&family=JetBrains+Mono:wght@400&display=swap&text=%20.%60%5E%22%2C%3A%3BIl%21i%3E%3C~%2B_-%3F%5D%5B%7D%7B1%29%28%7C%2FtfjrxnuvczXYUJCLQ0OZmwqpdbkhao%2A%23MW%268%25B%40%24Ashley." />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Inter:wght@500&display=swap" />
+  </noscript>
 
+  <!-- Tailwind precompilado (antes: compilador CDN en tiempo de ejecución) -->
+  <style>*,:after,:before{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgba(59,130,246,.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgba(59,130,246,.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/*! tailwindcss v3.4.17 | MIT License | https://tailwindcss.com*/*,:after,:before{box-sizing:border-box;border:0 solid #e5e7eb}:after,:before{--tw-content:""}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;-o-tab-size:4;tab-size:4;font-family:ui-sans-serif,system-ui,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,Liberation Mono,Courier New,monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0}fieldset,legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::-moz-placeholder,textarea::-moz-placeholder{opacity:1;color:#9ca3af}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.pointer-events-none{pointer-events:none}.invisible{visibility:hidden}.fixed{position:fixed}.absolute{position:absolute}.relative{position:relative}.inset-0{inset:0}.bottom-12{bottom:3rem}.bottom-3{bottom:.75rem}.left-0{left:0}.left-1\/2{left:50%}.left-4{left:1rem}.top-0{top:0}.z-0{z-index:0}.z-10{z-index:10}.z-50{z-index:50}.order-1{order:1}.order-2{order:2}.mx-auto{margin-left:auto;margin-right:auto}.mb-12{margin-bottom:3rem}.mb-14{margin-bottom:3.5rem}.mb-6{margin-bottom:1.5rem}.mb-8{margin-bottom:2rem}.mt-10{margin-top:2.5rem}.mt-2{margin-top:.5rem}.block{display:block}.flex{display:flex}.grid{display:grid}.h-\[300px\]{height:300px}.h-\[340px\]{height:340px}.h-\[360px\]{height:360px}.h-full{height:100%}.min-h-\[100vh\]{min-height:100vh}.min-h-\[92vh\]{min-height:92vh}.min-h-\[95vh\]{min-height:95vh}.min-h-screen{min-height:100vh}.w-\[260px\]{width:260px}.w-full{width:100%}.max-w-\[1400px\]{max-width:1400px}.max-w-\[280px\]{max-width:280px}.max-w-\[290px\]{max-width:290px}.max-w-\[300px\]{max-width:300px}.max-w-\[820px\]{max-width:820px}.-translate-x-1\/2{--tw-translate-x:-50%;transform:translate(var(--tw-translate-x),var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.select-none{-webkit-user-select:none;-moz-user-select:none;user-select:none}.grid-cols-1{grid-template-columns:repeat(1,minmax(0,1fr))}.flex-col{flex-direction:column}.items-center{align-items:center}.justify-start{justify-content:flex-start}.justify-end{justify-content:flex-end}.justify-center{justify-content:center}.gap-12{gap:3rem}.overflow-visible{overflow:visible}.px-4{padding-left:1rem;padding-right:1rem}.px-6{padding-left:1.5rem;padding-right:1.5rem}.py-24{padding-top:6rem;padding-bottom:6rem}.py-32{padding-top:8rem;padding-bottom:8rem}.text-center{text-align:center}.text-\[clamp\(112px\2c 21vw\2c 295px\)\]{font-size:clamp(112px,21vw,295px)}.text-\[clamp\(22px\2c 2\.55vw\2c 33px\)\]{font-size:clamp(22px,2.55vw,33px)}.text-\[clamp\(22px\2c 2\.5vw\2c 32px\)\]{font-size:clamp(22px,2.5vw,32px)}.text-\[clamp\(24px\2c 2\.9vw\2c 38px\)\]{font-size:clamp(24px,2.9vw,38px)}.text-\[clamp\(64px\2c 11vw\2c 145px\)\]{font-size:clamp(64px,11vw,145px)}.italic{font-style:italic}.leading-\[0\.88\]{line-height:.88}.leading-\[0\.9\]{line-height:.9}.tracking-\[-0\.01em\]{letter-spacing:-.01em}.tracking-\[-0\.04em\]{letter-spacing:-.04em}.tracking-\[0\.14em\]{letter-spacing:.14em}.text-\[\#121613\]{--tw-text-opacity:1;color:rgb(18 22 19/var(--tw-text-opacity,1))}.text-\[\#2bee4b\]{--tw-text-opacity:1;color:rgb(43 238 75/var(--tw-text-opacity,1))}.text-\[\#516254\]{--tw-text-opacity:1;color:rgb(81 98 84/var(--tw-text-opacity,1))}.opacity-70{opacity:.7}.opacity-\[0\.028\]{opacity:.028}@media (min-width:640px){.sm\:w-\[300px\]{width:300px}.sm\:px-14{padding-left:3.5rem;padding-right:3.5rem}}@media (min-width:768px){.md\:order-1{order:1}.md\:order-2{order:2}.md\:col-span-3{grid-column:span 3/span 3}.md\:col-span-4{grid-column:span 4/span 4}.md\:col-span-7{grid-column:span 7/span 7}.md\:col-start-1{grid-column-start:1}.md\:col-start-10{grid-column-start:10}.md\:col-start-2{grid-column-start:2}.md\:col-start-6{grid-column-start:6}.md\:col-start-9{grid-column-start:9}.md\:ml-auto{margin-left:auto}.md\:mr-\[6\%\]{margin-right:6%}.md\:w-9\/12{width:75%}.md\:grid-cols-12{grid-template-columns:repeat(12,minmax(0,1fr))}.md\:px-24{padding-left:6rem;padding-right:6rem}}@media (min-width:1024px){.lg\:w-8\/12{width:66.666667%}}</style>
   <style>
     :root {
       /* New Form Tokens — Strictly Light Bone White Canvas */
@@ -99,7 +109,6 @@
     /* Palabras animadas por scroll (blur + translateY + opacity) */
     .k-word {
       display: inline-block;
-      will-change: transform, opacity, filter;
       transition: color 0.4s ease;
     }
 
@@ -145,6 +154,24 @@
       will-change: transform;
       z-index: 10;
     }
+
+    /* Móvil / movimiento reducido: scroll nativo, sin contenedor fijo */
+    .native-scroll #smooth-wrapper {
+      position: relative;
+      will-change: auto;
+    }
+
+    .native-scroll #scroll-spacer {
+      display: none;
+    }
+
+    #paper-grain {
+      background-repeat: repeat;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .scroll-breath-line { animation: none; opacity: 0.6; }
+    }
   </style>
 </head>
 <body>
@@ -152,13 +179,7 @@
   <!-- =====================================================================
        TEXTURA DE GRANO DE PELÍCULA (FRACTAL NOISE 0.025)
        ===================================================================== -->
-  <svg class="fixed inset-0 w-full h-full pointer-events-none z-50 opacity-[0.028]" aria-hidden="true">
-    <filter id="paper-grain">
-      <feTurbulence type="fractalNoise" baseFrequency="0.82" numOctaves="3" stitchTiles="stitch" />
-      <feColorMatrix type="saturate" values="0" />
-    </filter>
-    <rect width="100%" height="100%" filter="url(#paper-grain)" />
-  </svg>
+  <div id="paper-grain" class="fixed inset-0 w-full h-full pointer-events-none z-50 opacity-[0.028]" aria-hidden="true"></div>
 
   <!-- =====================================================================
        MUNDO DE SCROLL CINEMÁTICO (FONDO 100% BONE WHITE #FAFFFA, SIN UI)
@@ -169,6 +190,7 @@
       <!-- HILO CALIGRÁFICO BOTÁNICO EN SVG QUE RECORRE LA CARTA -->
       <svg
         id="calligraphic-thread-svg"
+        aria-hidden="true"
         class="absolute top-0 left-0 w-full h-full pointer-events-none z-0 overflow-visible"
         preserveAspectRatio="none"
         viewBox="0 0 1000 6200"
@@ -390,47 +412,73 @@
   <div id="scroll-spacer" class="w-full pointer-events-none"></div>
 
   <script>
+  (() => {
+    // =========================================================================
+    // 0. MODO DE RENDIMIENTO
+    //    - Táctil / móvil: scroll nativo (sin Lerp) → sin retraso al deslizar.
+    //    - Movimiento reducido: sin animaciones costosas.
+    // =========================================================================
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const isTouch = window.matchMedia('(hover: none), (pointer: coarse)').matches;
+    const nativeScroll = isTouch || reduceMotion;
+    const root = document.documentElement;
+    if (nativeScroll) root.classList.add('native-scroll');
+
+    // Textura de grano: un mosaico de ruido generado una sola vez
+    // (sustituye al filtro SVG feTurbulence a pantalla completa, muy costoso en móvil)
+    (function paintGrain() {
+      const el = document.getElementById('paper-grain');
+      if (!el) return;
+      const size = 160;
+      const c = document.createElement('canvas');
+      c.width = c.height = size;
+      const g = c.getContext('2d');
+      const img = g.createImageData(size, size);
+      const d = img.data;
+      for (let i = 0; i < d.length; i += 4) {
+        const v = (Math.random() * 255) | 0;
+        d[i] = d[i + 1] = d[i + 2] = v;
+        d[i + 3] = (Math.random() * 255) | 0;
+      }
+      g.putImageData(img, 0, 0);
+      el.style.backgroundImage = `url(${c.toDataURL('image/png')})`;
+      el.style.backgroundSize = `${size / 2}px ${size / 2}px`;
+    })();
+
     // =========================================================================
     // 1. PREPARACIÓN DE PALABRAS PARA REVELADO KINETIC (BLUR + OPACITY + Y)
     // =========================================================================
-    const paragraphs = document.querySelectorAll('.kinetic-paragraph');
     const allWordItems = [];
     const highlightSpans = [];
 
-    paragraphs.forEach((p) => {
-      const childNodes = Array.from(p.childNodes);
-      p.innerHTML = '';
+    function splitInto(target, text) {
+      const frag = document.createDocumentFragment();
+      text.split(/(\s+)/).forEach((token) => {
+        if (!token) return;
+        if (token.trim().length === 0) {
+          frag.appendChild(document.createTextNode(token));
+        } else {
+          const span = document.createElement('span');
+          span.className = 'k-word';
+          span.textContent = token;
+          frag.appendChild(span);
+          allWordItems.push({ el: span, top: 0, last: -1 });
+        }
+      });
+      target.appendChild(frag);
+    }
 
+    document.querySelectorAll('.kinetic-paragraph').forEach((p) => {
+      const childNodes = Array.from(p.childNodes);
+      p.textContent = '';
       childNodes.forEach((node) => {
         if (node.nodeType === Node.TEXT_NODE) {
-          const words = node.textContent.split(/(\s+)/);
-          words.forEach((token) => {
-            if (token.trim().length === 0) {
-              p.appendChild(document.createTextNode(token));
-            } else {
-              const span = document.createElement('span');
-              span.className = 'k-word';
-              span.textContent = token;
-              p.appendChild(span);
-              allWordItems.push({ el: span, top: 0 });
-            }
-          });
+          splitInto(p, node.textContent);
         } else if (node.nodeType === Node.ELEMENT_NODE) {
           const wrapper = node.cloneNode(false);
-          const innerWords = node.textContent.split(/(\s+)/);
-          innerWords.forEach((token) => {
-            if (token.trim().length === 0) {
-              wrapper.appendChild(document.createTextNode(token));
-            } else {
-              const span = document.createElement('span');
-              span.className = 'k-word';
-              span.textContent = token;
-              wrapper.appendChild(span);
-              allWordItems.push({ el: span, top: 0 });
-            }
-          });
+          splitInto(wrapper, node.textContent);
           p.appendChild(wrapper);
-          highlightSpans.push({ el: wrapper, top: 0 });
+          highlightSpans.push({ el: wrapper, top: 0, last: -1 });
         }
       });
     });
@@ -440,94 +488,110 @@
       speed: parseFloat(el.dataset.speed || '-0.1'),
       rot: parseFloat(el.dataset.rot || '2'),
       top: 0,
-      height: 0
+      height: 0,
+      last: ''
     }));
 
     // =========================================================================
     // 2. MOTOR DE ARTE FOTOGRÁFICO-BOTÁNICO EN MATRIZ ASCII
+    //    Optimizado: atlas de glifos pre-renderizado (drawImage en lugar de
+    //    fillText), solo se dibujan las láminas visibles, a ~30 fps.
     // =========================================================================
-    // Rampa de luminancia fotográfica convertida a caracteres tipográficos
     const ASCII_RAMP = ' .`^",:;Il!i><~+_-?][}{1)(|/tfjrxnuvczXYUJCLQ0OZmwqpdbkhao*#MW&8%B@$';
+    const RAMP_LAST = ASCII_RAMP.length - 1;
+    const COLORS = ['rgba(81, 98, 84, 0.78)', '#121613', '#2bee4b'];
+    const CELL_W = 6.2;
+    const CELL_H = 10.2;
+    const DPR = Math.min(window.devicePixelRatio || 1, 2);
 
-    const asciiCanvases = Array.from(document.querySelectorAll('.ascii-canvas')).map((canvasEl) => {
-      const ctx = canvasEl.getContext('2d');
-      return {
-        canvas: canvasEl,
-        ctx,
-        type: canvasEl.dataset.flower || 'calla-single',
-        cols: 0,
-        rows: 0,
-        cellW: 7,
-        cellH: 11,
-        width: 0,
-        height: 0
-      };
-    });
+    // Atlas: una fila por color, una columna por carácter de la rampa
+    const atlas = document.createElement('canvas');
+    const ATLAS_CW = Math.ceil(8 * DPR);
+    const ATLAS_CH = Math.ceil(12 * DPR);
+    function buildAtlas() {
+      atlas.width = ATLAS_CW * ASCII_RAMP.length;
+      atlas.height = ATLAS_CH * COLORS.length;
+      const a = atlas.getContext('2d');
+      a.setTransform(DPR, 0, 0, DPR, 0, 0);
+      a.clearRect(0, 0, atlas.width, atlas.height);
+      a.font = '400 9.5px "JetBrains Mono", monospace';
+      a.textBaseline = 'top';
+      COLORS.forEach((color, row) => {
+        a.fillStyle = color;
+        for (let i = 0; i < ASCII_RAMP.length; i++) {
+          a.fillText(ASCII_RAMP[i], (i * ATLAS_CW) / DPR, (row * ATLAS_CH) / DPR);
+        }
+      });
+    }
+    buildAtlas();
+
+    const asciiCanvases = Array.from(document.querySelectorAll('.ascii-canvas')).map((canvasEl) => ({
+      canvas: canvasEl,
+      ctx: canvasEl.getContext('2d'),
+      type: canvasEl.dataset.flower || 'calla-single',
+      cols: 0,
+      rows: 0,
+      width: 0,
+      height: 0,
+      visible: false,
+      dirty: true
+    }));
 
     function setupAsciiPlates() {
-      const dpr = Math.min(window.devicePixelRatio || 1, 2);
       asciiCanvases.forEach((plate) => {
         const rect = plate.canvas.parentElement.getBoundingClientRect();
-        plate.width = Math.max(200, rect.width);
-        plate.height = Math.max(220, rect.height);
-        plate.canvas.width = plate.width * dpr;
-        plate.canvas.height = plate.height * dpr;
-        plate.ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-
-        plate.cellW = 6.2;
-        plate.cellH = 10.2;
-        plate.cols = Math.floor(plate.width / plate.cellW);
-        plate.rows = Math.floor(plate.height / plate.cellH);
+        // offsetWidth/Height no se ven afectados por la rotación del parallax
+        const w = Math.max(200, plate.canvas.parentElement.offsetWidth || rect.width);
+        const h = Math.max(220, plate.canvas.parentElement.offsetHeight || rect.height);
+        if (w === plate.width && h === plate.height) return;
+        plate.width = w;
+        plate.height = h;
+        plate.canvas.width = Math.round(w * DPR);
+        plate.canvas.height = Math.round(h * DPR);
+        plate.ctx.setTransform(1, 0, 0, 1, 0, 0);
+        plate.ctx.imageSmoothingEnabled = false;
+        plate.cols = Math.floor(w / CELL_W);
+        plate.rows = Math.floor(h / CELL_H);
+        plate.dirty = true;
       });
     }
 
+    // Resultado compartido para evitar crear objetos por cada celda
+    let sampleGreen = false;
+
     // Evalúa el campo de intensidad luminosa de una flor botánica según el tipo de lámina
     function sampleFlowerDensity(type, nx, ny, time, scrollOffset) {
-      // Oscilación orgánica de brisa sobre el tallo y los pétalos
       const sway = Math.sin(time * 1.1 + ny * 2.4 + scrollOffset * 0.002) * 0.045 * (1 - ny * 0.4);
       const x = nx + sway;
       const y = ny;
 
       let density = 0;
-      let isPistilGreen = false;
+      sampleGreen = false;
 
       if (type === 'calla-single') {
-        // Cáliz escultural de alcatraz (espata envolvente con sombreado volumétrico)
-        const cx = 0;
-        const cy = -0.12;
-        const dx = x - cx;
-        const dy = y - cy;
-
-        // Forma acampanada de alcatraz
+        const dx = x;
+        const dy = y + 0.12;
         const cupWidth = Math.max(0.04, 0.36 * (0.65 - dy));
         const distCup = Math.abs(dx) / cupWidth;
 
         if (dy > -0.58 && dy < 0.42 && distCup < 1.0) {
-          // Sombreado fotográfico: bordes más densos y pliegue central suave
           const rim = Math.pow(distCup, 1.35);
           const verticalGrad = 1 - Math.abs(dy + 0.08) * 1.15;
           density = Math.max(0, (0.35 + rim * 0.65) * verticalGrad);
-
-          // Labio superior curvado de la espata
           const lipCurve = -0.42 + Math.cos(dx * 5.2) * 0.12;
-          if (Math.abs(dy - lipCurve) < 0.09) {
-            density = Math.min(1, density + 0.38);
-          }
+          if (Math.abs(dy - lipCurve) < 0.09) density = Math.min(1, density + 0.38);
         }
 
-        // Espádice central (pistilo en Highlighter Green #2bee4b)
         if (Math.abs(dx - 0.02) < 0.036 && dy > -0.40 && dy < 0.08) {
           density = 0.92;
-          isPistilGreen = true;
+          sampleGreen = true;
         }
 
-        // Tallo botánico curvado inferior
         const stemCenter = Math.sin((y - 0.3) * 3.2) * 0.06;
         if (y >= 0.35 && Math.abs(x - stemCenter) < 0.042) {
           density = Math.max(density, 0.68 - Math.abs(x - stemCenter) * 12);
         }
       } else if (type === 'cosmos-bloom') {
-        // Flor abierta en vista frontal con 8 pétalos sombreados
         const dx = x;
         const dy = y + 0.08;
         const r = Math.sqrt(dx * dx + dy * dy);
@@ -539,46 +603,42 @@
           const striations = 0.8 + 0.2 * Math.cos(angle * 32);
           density = (1 - Math.pow(normR, 2.2) * 0.45) * striations;
         } else if (r <= 0.11) {
-          // Corazón de polen en verde neón
           density = 0.95;
-          isPistilGreen = true;
+          sampleGreen = true;
         }
 
-        // Tallo fino y hoja lateral
         if (y > 0.28 && Math.abs(x - (y - 0.28) * 0.14) < 0.032) {
           density = Math.max(density, 0.58);
         }
       } else if (type === 'calla-duet') {
-        // Dos alcatraces entrelazados a distinta altura
-        const flowers = [
-          { ox: -0.22, oy: -0.18, sc: 0.78, tilt: -0.18 },
-          { ox: 0.22, oy: 0.04, sc: 0.72, tilt: 0.22 }
-        ];
-
-        flowers.forEach((f) => {
-          const rx = (x - f.ox) * Math.cos(f.tilt) - (y - f.oy) * Math.sin(f.tilt);
-          const ry = (x - f.ox) * Math.sin(f.tilt) + (y - f.oy) * Math.cos(f.tilt);
-          const lx = rx / f.sc;
-          const ly = ry / f.sc;
+        for (let k = 0; k < 2; k++) {
+          const ox = k === 0 ? -0.22 : 0.22;
+          const oy = k === 0 ? -0.18 : 0.04;
+          const sc = k === 0 ? 0.78 : 0.72;
+          const cosT = k === 0 ? COS_A : COS_B;
+          const sinT = k === 0 ? SIN_A : SIN_B;
+          const rx = (x - ox) * cosT - (y - oy) * sinT;
+          const ry = (x - ox) * sinT + (y - oy) * cosT;
+          const lx = rx / sc;
+          const ly = ry / sc;
 
           const w = Math.max(0.03, 0.34 * (0.62 - ly));
-          const d = Math.abs(lx) / w;
-          if (ly > -0.55 && ly < 0.40 && d < 1.0) {
-            const val = (0.3 + Math.pow(d, 1.4) * 0.7) * (1 - Math.abs(ly) * 0.9);
+          const dd = Math.abs(lx) / w;
+          if (ly > -0.55 && ly < 0.40 && dd < 1.0) {
+            const val = (0.3 + Math.pow(dd, 1.4) * 0.7) * (1 - Math.abs(ly) * 0.9);
             if (val > density) density = val;
           }
           if (Math.abs(lx) < 0.038 && ly > -0.36 && ly < 0.06) {
             density = 0.94;
-            isPistilGreen = true;
+            sampleGreen = true;
           }
-        });
+        }
 
-        // Tallos convergentes
         if (y > 0.22 && Math.abs(Math.abs(x) - (0.24 - (y - 0.22) * 0.28)) < 0.035) {
           density = Math.max(density, 0.56);
         }
       } else {
-        // 'lily-crown': Lirio imperial / sello botánico simétrico para el cierre
+        // 'lily-crown'
         const dx = x;
         const dy = y + 0.04;
         const r = Math.sqrt(dx * dx + dy * dy);
@@ -586,65 +646,78 @@
 
         const crownShape = 0.48 + 0.28 * Math.cos(angle * 6);
         if (r < crownShape) {
-          const innerRing = Math.abs(r - 0.22) < 0.035;
-          density = (0.35 + (r / crownShape) * 0.62);
-          if (innerRing || r < 0.075) {
+          density = 0.35 + (r / crownShape) * 0.62;
+          if (Math.abs(r - 0.22) < 0.035 || r < 0.075) {
             density = 0.92;
-            isPistilGreen = true;
+            sampleGreen = true;
           }
         }
       }
 
-      return { density: Math.min(1, Math.max(0, density)), isPistilGreen };
+      return density < 0 ? 0 : density > 1 ? 1 : density;
     }
+    const COS_A = Math.cos(-0.18), SIN_A = Math.sin(-0.18);
+    const COS_B = Math.cos(0.22), SIN_B = Math.sin(0.22);
 
-    function renderAsciiPlates(time, scrollPos) {
-      asciiCanvases.forEach((plate) => {
-        const { ctx, cols, rows, cellW, cellH, width, height, type } = plate;
-        if (!cols || !rows) return;
+    function renderPlate(plate, time, scrollPos) {
+      const { ctx, cols, rows, type } = plate;
+      if (!cols || !rows) return;
 
-        ctx.clearRect(0, 0, width, height);
-        ctx.font = '400 9.5px "JetBrains Mono", monospace';
-        ctx.textBaseline = 'top';
+      ctx.clearRect(0, 0, plate.canvas.width, plate.canvas.height);
+      const cw = CELL_W * DPR;
+      const ch = CELL_H * DPR;
 
-        for (let r = 0; r < rows; r++) {
-          const ny = (r / rows) * 2 - 1;
-          for (let c = 0; c < cols; c++) {
-            const nx = (c / cols) * 2 - 1;
+      for (let r = 0; r < rows; r++) {
+        const ny = (r / rows) * 2 - 1;
+        const absNy = ny < 0 ? -ny : ny;
+        for (let c = 0; c < cols; c++) {
+          const nx = (c / cols) * 2 - 1;
+          let d = sampleFlowerDensity(type, nx, ny, time, scrollPos);
 
-            // Bordes de viñeta sutil estilo placa fotográfica impresa
-            const edgeDist = Math.max(Math.abs(nx), Math.abs(ny));
-            const sample = sampleFlowerDensity(type, nx, ny, time, scrollPos);
-
-            let d = sample.density;
-            if (d < 0.05 && edgeDist > 0.92 && (r + c) % 3 === 0) {
+          if (d < 0.05) {
+            const absNx = nx < 0 ? -nx : nx;
+            if ((absNx > absNy ? absNx : absNy) > 0.92 && (r + c) % 3 === 0) {
               d = 0.12; // Puntillismo muy tenue en el marco
-            }
-
-            if (d > 0.04) {
-              // Brillo de caracteres reactivo al scroll
-              const shimmer = 0.04 * Math.sin(scrollPos * 0.015 + r * 0.5 + c * 0.3);
-              const finalD = Math.min(0.99, Math.max(0.02, d + shimmer));
-              const charIdx = Math.floor(finalD * (ASCII_RAMP.length - 1));
-              const ch = ASCII_RAMP[charIdx];
-
-              if (sample.isPistilGreen) {
-                ctx.fillStyle = '#2bee4b';
-              } else if (finalD > 0.62) {
-                ctx.fillStyle = '#121613';
-              } else {
-                ctx.fillStyle = 'rgba(81, 98, 84, 0.78)';
-              }
-
-              ctx.fillText(ch, c * cellW, r * cellH);
+            } else {
+              continue;
             }
           }
+          if (d <= 0.04) continue;
+
+          const shimmer = 0.04 * Math.sin(scrollPos * 0.015 + r * 0.5 + c * 0.3);
+          let finalD = d + shimmer;
+          finalD = finalD > 0.99 ? 0.99 : finalD < 0.02 ? 0.02 : finalD;
+          const charIdx = (finalD * RAMP_LAST) | 0;
+          const colorRow = sampleGreen ? 2 : finalD > 0.62 ? 1 : 0;
+
+          ctx.drawImage(
+            atlas,
+            charIdx * ATLAS_CW, colorRow * ATLAS_CH, ATLAS_CW, ATLAS_CH,
+            Math.round(c * cw), Math.round(r * ch), ATLAS_CW, ATLAS_CH
+          );
         }
-      });
+      }
+    }
+
+    // Solo animar las láminas que están en pantalla
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          const plate = asciiCanvases.find((p) => p.canvas === entry.target);
+          if (plate) {
+            plate.visible = entry.isIntersecting;
+            if (plate.visible) plate.dirty = true;
+          }
+        });
+        wake();
+      }, { rootMargin: '120px 0px' });
+      asciiCanvases.forEach((p) => io.observe(p.canvas));
+    } else {
+      asciiCanvases.forEach((p) => { p.visible = true; });
     }
 
     // =========================================================================
-    // 3. MOTOR DE SMOOTH SCROLL (LERP) Y MEDICIÓN DE COORDENADAS
+    // 3. MOTOR DE SCROLL (LERP en escritorio, nativo en móvil) Y MEDICIÓN
     // =========================================================================
     const smoothWrapper = document.getElementById('smooth-wrapper');
     const smoothContent = document.getElementById('smooth-content');
@@ -655,138 +728,235 @@
     const threadGreen = document.getElementById('thread-green');
     let threadTotalLength = 0;
 
-    let currentScroll = 0;
-    let targetScroll = 0;
+    let currentScroll = window.scrollY || 0;
+    let targetScroll = currentScroll;
+    let lastRenderedScroll = -1;
     let maxScroll = 1;
     let vh = window.innerHeight;
     let vw = window.innerWidth;
-    let clock = 0;
+    let measured = false;
 
     function measureLayout() {
       vh = window.innerHeight;
       vw = window.innerWidth;
 
-      smoothWrapper.style.transform = 'translate3d(0px, 0px, 0px)';
+      let base = 0;
+      if (nativeScroll) {
+        base = window.scrollY || 0;
+      } else {
+        smoothWrapper.style.transform = 'translate3d(0px, 0px, 0px)';
+      }
 
-      const contentHeight = smoothContent.getBoundingClientRect().height;
-      scrollSpacer.style.height = `${contentHeight}px`;
+      const contentHeight = smoothContent.offsetHeight;
+      if (!nativeScroll) scrollSpacer.style.height = `${contentHeight}px`;
       maxScroll = Math.max(1, contentHeight - vh);
 
-      allWordItems.forEach((item) => {
-        const rect = item.el.getBoundingClientRect();
-        item.top = rect.top;
-      });
-
-      highlightSpans.forEach((item) => {
-        const rect = item.el.getBoundingClientRect();
-        item.top = rect.top;
-      });
-
+      // Lecturas agrupadas (sin escrituras intercaladas → un solo layout)
+      for (let i = 0; i < allWordItems.length; i++) {
+        allWordItems[i].top = allWordItems[i].el.getBoundingClientRect().top + base;
+      }
+      for (let i = 0; i < highlightSpans.length; i++) {
+        highlightSpans[i].top = highlightSpans[i].el.getBoundingClientRect().top + base;
+      }
       parallaxTiles.forEach((item) => {
-        const rect = item.el.getBoundingClientRect();
-        item.top = rect.top;
-        item.height = rect.height;
+        // offsetTop acumulado: inmune a la transformación del parallax
+        let el = item.el, top = 0;
+        while (el && el !== smoothContent) { top += el.offsetTop; el = el.offsetParent; }
+        item.top = top;
+        item.height = item.el.offsetHeight;
       });
 
-      if (threadInk && threadGreen) {
+      if (threadGreen && !threadTotalLength) {
         threadTotalLength = threadGreen.getTotalLength();
         threadInk.style.strokeDasharray = `${threadTotalLength}`;
         threadGreen.style.strokeDasharray = `${threadTotalLength}`;
       }
 
       setupAsciiPlates();
-      smoothWrapper.style.transform = `translate3d(0px, ${-currentScroll}px, 0px)`;
+      if (!nativeScroll) {
+        smoothWrapper.style.transform = `translate3d(0px, ${-currentScroll}px, 0px)`;
+      }
+
+      // Forzar re-aplicación de todos los estilos
+      allWordItems.forEach((w) => { w.last = -1; });
+      highlightSpans.forEach((h) => { h.last = -1; });
+      lastRenderedScroll = -1;
+      measured = true;
     }
 
     window.addEventListener('scroll', () => {
       targetScroll = window.scrollY || window.pageYOffset;
+      if (nativeScroll) currentScroll = targetScroll;
+      wake();
     }, { passive: true });
 
     // =========================================================================
-    // 4. BUCLE PRINCIPAL DE ANIMACIÓN (SCROLL + TIPOGRAFÍA + FLORES ASCII)
+    // 4. ACTUALIZACIÓN DE ESCENA (solo escribe estilos cuando cambian)
     // =========================================================================
-    function renderLoop() {
-      clock += 0.012;
+    const BLUR_MAX = isTouch ? 5 : 7.5;
+    let heroLast = -1;
 
-      // 1. Interpolación suave (Lerp) del scroll
-      currentScroll += (targetScroll - currentScroll) * 0.085;
-      smoothWrapper.style.transform = `translate3d(0px, ${-currentScroll.toFixed(2)}px, 0px)`;
-
-      // 2. Desvanecimiento sutil de la portada al iniciar el scroll
-      const heroProgress = Math.min(1, Math.max(0, currentScroll / (vh * 0.75)));
-      if (heroBlock) {
-        heroBlock.style.opacity = `${1 - heroProgress * 0.92}`;
-        heroBlock.style.transform = `translate3d(0px, ${heroProgress * 42}px, 0px)`;
-        heroBlock.style.filter = `blur(${(heroProgress * 7).toFixed(2)}px)`;
+    function updateScene(scroll) {
+      // Portada
+      const heroProgress = Math.min(1, Math.max(0, scroll / (vh * 0.75)));
+      const hq = Math.round(heroProgress * 200) / 200;
+      if (heroBlock && hq !== heroLast) {
+        heroLast = hq;
+        heroBlock.style.opacity = `${1 - hq * 0.92}`;
+        heroBlock.style.transform = `translate3d(0px, ${(hq * 42).toFixed(1)}px, 0px)`;
+        heroBlock.style.filter = hq > 0.01 && !reduceMotion ? `blur(${(hq * 7).toFixed(2)}px)` : 'none';
       }
 
-      // 3. Dibujo orgánico del hilo caligráfico en SVG
+      // Hilo caligráfico
       if (threadTotalLength > 0) {
-        const scrollRatio = Math.min(1, Math.max(0, currentScroll / maxScroll));
-        const drawOffset = threadTotalLength * (1 - scrollRatio);
-        threadInk.style.strokeDashoffset = `${drawOffset}`;
-        threadGreen.style.strokeDashoffset = `${drawOffset}`;
+        const scrollRatio = Math.min(1, Math.max(0, scroll / maxScroll));
+        const drawOffset = (threadTotalLength * (1 - scrollRatio)).toFixed(1);
+        threadInk.style.strokeDashoffset = drawOffset;
+        threadGreen.style.strokeDashoffset = drawOffset;
       }
 
-      // 4. Animación palabra por palabra (Blur 8px -> 0px, Opacity, TranslateY)
+      // Palabras (blur → nítido, opacidad, desplazamiento)
       const enterStart = vh * 0.93;
       const enterEnd = vh * 0.62;
-
+      const span = enterStart - enterEnd;
       for (let i = 0; i < allWordItems.length; i++) {
         const item = allWordItems[i];
-        const screenY = item.top - currentScroll;
+        let p = (enterStart - (item.top - scroll)) / span;
+        p = p < 0 ? 0 : p > 1 ? 1 : p;
+        if (reduceMotion) p = 1;
+        const q = Math.round(p * 60);
+        if (q === item.last) continue;
+        item.last = q;
 
-        let p = (enterStart - screenY) / (enterStart - enterEnd);
-        p = Math.min(1, Math.max(0, p));
-
-        const eased = 1 - Math.pow(1 - p, 3);
-        const blurVal = (1 - eased) * 7.5;
-        const translateY = (1 - eased) * 16;
-        const alpha = 0.08 + eased * 0.92;
-
-        item.el.style.opacity = alpha.toFixed(3);
-        item.el.style.transform = `translate3d(0px, ${translateY.toFixed(1)}px, 0px)`;
-        item.el.style.filter = blurVal > 0.15 ? `blur(${blurVal.toFixed(2)}px)` : 'none';
+        const s = item.el.style;
+        if (q === 60) {
+          s.opacity = '';
+          s.transform = '';
+          s.filter = '';
+          continue;
+        }
+        const eased = 1 - Math.pow(1 - q / 60, 3);
+        const blurVal = (1 - eased) * BLUR_MAX;
+        s.opacity = (0.08 + eased * 0.92).toFixed(3);
+        s.transform = `translate3d(0px, ${((1 - eased) * 16).toFixed(1)}px, 0px)`;
+        s.filter = blurVal > 0.15 ? `blur(${blurVal.toFixed(2)}px)` : 'none';
       }
 
-      // 5. Expansión de los subrayados en Highlighter Green (#2bee4b) al cruzar el centro
+      // Subrayados Highlighter Green
       const hlStart = vh * 0.80;
       const hlEnd = vh * 0.46;
       for (let i = 0; i < highlightSpans.length; i++) {
         const item = highlightSpans[i];
-        const screenY = item.top - currentScroll;
-        let hp = (hlStart - screenY) / (hlStart - hlEnd);
-        hp = Math.min(1, Math.max(0, hp));
-        item.el.style.setProperty('--hl-progress', hp.toFixed(3));
+        let hp = (hlStart - (item.top - scroll)) / (hlStart - hlEnd);
+        hp = hp < 0 ? 0 : hp > 1 ? 1 : hp;
+        if (reduceMotion) hp = 1;
+        const q = Math.round(hp * 200);
+        if (q === item.last) continue;
+        item.last = q;
+        item.el.style.setProperty('--hl-progress', (q / 200).toFixed(3));
       }
 
-      // 6. Láminas florales ASCII con Parallax diferencial y ligera rotación
-      for (let i = 0; i < parallaxTiles.length; i++) {
-        const tile = parallaxTiles[i];
-        const centerOffset = (tile.top + tile.height * 0.5 - currentScroll) - vh * 0.5;
-        const yShift = centerOffset * tile.speed;
-        const rotAngle = (centerOffset / vh) * tile.rot;
-        tile.el.style.transform = `translate3d(0px, ${yShift.toFixed(1)}px, 0px) rotate(${rotAngle.toFixed(2)}deg)`;
+      // Parallax de las láminas
+      if (!reduceMotion) {
+        for (let i = 0; i < parallaxTiles.length; i++) {
+          const tile = parallaxTiles[i];
+          const centerOffset = (tile.top + tile.height * 0.5 - scroll) - vh * 0.5;
+          if (Math.abs(centerOffset) > vh * 1.5) continue; // fuera de pantalla
+          const t = `translate3d(0px, ${(centerOffset * tile.speed).toFixed(1)}px, 0px) rotate(${((centerOffset / vh) * tile.rot).toFixed(2)}deg)`;
+          if (t !== tile.last) {
+            tile.last = t;
+            tile.el.style.transform = t;
+          }
+        }
       }
-
-      // 7. Renderizar las matrices de flores en ASCII sobre fondo Bone White
-      renderAsciiPlates(clock, currentScroll);
-
-      requestAnimationFrame(renderLoop);
     }
 
-    // Inicialización y recálculo responsivo
+    // =========================================================================
+    // 5. BUCLE PRINCIPAL — duerme cuando no hay nada que animar
+    // =========================================================================
+    const PLATE_INTERVAL = 1000 / 30;
+    let lastPlateTime = 0;
+    let rafId = 0;
+    let startTime = performance.now();
+
+    function wake() {
+      if (!rafId && measured) rafId = requestAnimationFrame(renderLoop);
+    }
+
+    function renderLoop(now) {
+      rafId = 0;
+      let keepGoing = false;
+
+      // 1. Lerp del scroll (solo escritorio)
+      if (!nativeScroll) {
+        const delta = targetScroll - currentScroll;
+        if (Math.abs(delta) < 0.1) {
+          currentScroll = targetScroll;
+        } else {
+          currentScroll += delta * 0.085;
+          keepGoing = true;
+        }
+        smoothWrapper.style.transform = `translate3d(0px, ${(-currentScroll).toFixed(2)}px, 0px)`;
+      }
+
+      if (Math.abs(currentScroll - lastRenderedScroll) > 0.05) {
+        lastRenderedScroll = currentScroll;
+        updateScene(currentScroll);
+      }
+
+      // 2. Láminas ASCII visibles a ~30 fps
+      let anyVisible = false;
+      for (let i = 0; i < asciiCanvases.length; i++) {
+        if (asciiCanvases[i].visible) { anyVisible = true; break; }
+      }
+      if (anyVisible) {
+        if (reduceMotion) {
+          asciiCanvases.forEach((p) => {
+            if (p.visible && p.dirty) { renderPlate(p, 0, 0); p.dirty = false; }
+          });
+        } else {
+          keepGoing = true;
+          if (now - lastPlateTime >= PLATE_INTERVAL) {
+            lastPlateTime = now;
+            const clock = ((now - startTime) / 1000) * 0.72; // ≈ 0.012 por frame a 60 fps
+            asciiCanvases.forEach((p) => {
+              if (p.visible) { renderPlate(p, clock, currentScroll); p.dirty = false; }
+            });
+          }
+        }
+      }
+
+      if (keepGoing) rafId = requestAnimationFrame(renderLoop);
+    }
+
+    // Re-medición tras cambios de tamaño (con debounce; en móvil se ignoran
+    // los cambios de alto provocados por la barra de direcciones)
+    let resizeTimer = 0;
     window.addEventListener('resize', () => {
-      measureLayout();
+      if (nativeScroll && window.innerWidth === vw && Math.abs(window.innerHeight - vh) < 160) return;
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => { measureLayout(); wake(); }, 150);
     });
 
-    window.onload = () => {
+    function init() {
       measureLayout();
-      if (document.fonts && document.fonts.ready) {
-        document.fonts.ready.then(measureLayout);
-      }
-      requestAnimationFrame(renderLoop);
-    };
+      updateScene(currentScroll);
+      lastRenderedScroll = currentScroll;
+      wake();
+    }
+
+    init();
+
+    if (document.fonts) {
+      document.fonts.load('400 9.5px "JetBrains Mono"').then(() => {
+        buildAtlas();
+        asciiCanvases.forEach((p) => { p.dirty = true; });
+        wake();
+      }).catch(() => {});
+      document.fonts.ready.then(() => { measureLayout(); wake(); });
+    }
+    window.addEventListener('load', () => { measureLayout(); wake(); });
+  })();
   </script>
 </body>
-</html>`
+</html>
