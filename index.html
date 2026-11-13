@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ashley.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --color-bone-white: #fafffa;
+      --color-press-black: #121613;
+      --color-typesetter-ink: #000000;
+      --color-slate-verdant: #232924;
+      --color-newsprint-gray: #516254;
+      --color-muted-sage: #c8d2c8;
+      --color-highlighter-green: #2bee4b;
+      --color-shadow-moss: #93b799;
+      --color-echo-green: #c4e4c9;
+
+      --font-serif: 'Cormorant Garamond', 'PP Mondwest', 'Editorial New', Georgia, serif;
+      --font-sans: 'Inter', 'TWK Lausanne', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      background-color: var(--color-bone-white);
+      color: var(--color-press-black);
+      font-family: var(--font-serif);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
+      selection-background-color: var(--color-highlighter-green);
+      selection-color: var(--color-typesetter-ink);
+    }
+
+    ::selection {
+      background: var(--color-highlighter-green);
+      color: var(--color-typesetter-ink);
+    }
+
+    /* Grano sutil de papel */
+    .paper-grain {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 50;
+      opacity: 0.028;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    }
+
+    /* Hilo caligráfico de fondo */
+    .thread-svg {
+      position: fixed;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+      max-width: 1200px;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 1;
+      opacity: 0.35;
+    }
+
+    main {
+      position: relative;
+      z-index: 5;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 28px;
+    }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      padding: 10vh 0;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 48px;
+      align-items: center;
+    }
+
+    .hero-title {
+      font-family: var(--font-serif);
+      font-weight: 300;
+      font-size: clamp(82px, 14vw, 210px);
+      line-height: 0.88;
+      letter-spacing: -0.04em;
+      color: var(--color-press-black);
+      margin-bottom: 28px;
+    }
+
+    .hero-title .dot {
+      color: var(--color-highlighter-green);
+      text-shadow: 0 0 24px rgba(43, 238, 75, 0.45);
+    }
+
+    .hero-salutation {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-weight: 400;
+      font-size: clamp(24px, 3vw, 36px);
+      color: var(--color-press-black);
+      letter-spacing: -0.01em;
+      margin-top: 12px;
+    }
+
+    /* Marco de fotografía ASCII */
+    .ascii-frame {
+      position: relative;
+      background: var(--color-bone-white);
+      border: 1px solid rgba(18, 22, 19, 0.14);
+      border-radius: 14px;
+      padding: 18px 18px 14px;
+      overflow: hidden;
+      transition: border-color 0.6s ease;
+    }
+
+    .ascii-frame:hover {
+      border-color: var(--color-newsprint-gray);
+    }
+
+    .ascii-canvas {
+      width: 100%;
+      height: 360px;
+      display: block;
+    }
+
+    .ascii-caption {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 12px;
+      margin-top: 8px;
+      border-top: 1px solid rgba(18, 22, 19, 0.08);
+      font-family: var(--font-sans);
+      font-size: 10px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--color-newsprint-gray);
+    }
+
+    .ascii-dot {
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--color-highlighter-green);
+      margin-right: 6px;
+      box-shadow: 0 0 8px rgba(43, 238, 75, 0.7);
+    }
+
+    .scroll-whisper {
+      position: absolute;
+      bottom: 36px;
+      left: 0;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-family: var(--font-sans);
+      font-size: 11px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--color-newsprint-gray);
+    }
+
+    .scroll-line {
+      width: 48px;
+      height: 1px;
+      background: var(--color-newsprint-gray);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .scroll-line::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: var(--color-highlighter-green);
+      animation: pulseLine 2.6s infinite cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    @keyframes pulseLine {
+      0% { left: -100%; }
+      50% { left: 0%; }
+      100% { left: 100%; }
+    }
+
+    /* SECCIONES DE LA CARTA */
+    .passage-section {
+      min-height: 78vh;
+      display: flex;
+      align-items: center;
+      padding: 11vh 0;
+      position: relative;
+    }
+
+    .passage-layout {
+      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 28px;
+      align-items: center;
+    }
+
+    .passage-text-col {
+      grid-column: 2 / 11;
+    }
+
+    .passage-layout.with-ascii-right .passage-text-col {
+      grid-column: 1 / 8;
+    }
+
+    .passage-layout.with-ascii-right .passage-ascii-col {
+      grid-column: 8 / 13;
+    }
+
+    .passage-layout.with-ascii-left .passage-ascii-col {
+      grid-column: 1 / 6;
+    }
+
+    .passage-layout.with-ascii-left .passage-text-col {
+      grid-column: 6 / 13;
+    }
+
+    .hairline-rule {
+      height: 1px;
+      background: rgba(18, 22, 19, 0.15);
+      width: 100%;
+      margin-bottom: 32px;
+      transform-origin: left center;
+      transform: scaleX(0);
+      transition: transform 1.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .hairline-rule.visible {
+      transform: scaleX(1);
+    }
+
+    .paragraph-body {
+      font-family: var(--font-serif);
+      font-weight: 400;
+      font-size: clamp(23px, 2.65vw, 35px);
+      line-height: 1.48;
+      letter-spacing: -0.015em;
+      color: var(--color-press-black);
+    }
+
+    /* Animación palabra por palabra al estilo cinético */
+    .word {
+      display: inline-block;
+      opacity: 0.08;
+      filter: blur(7px);
+      transform: translateY(10px);
+      transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1),
+                  filter 0.65s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, filter, transform;
+    }
+
+    .word.revealed {
+      opacity: 1;
+      filter: blur(0px);
+      transform: translateY(0px);
+    }
+
+    /* Subrayado marcador Highlighter Green (#2bee4b) */
+    .marker-phrase {
+      position: relative;
+      display: inline;
+      background-image: linear-gradient(120deg, rgba(43, 238, 75, 0.42) 0%, rgba(43, 238, 75, 0.42) 100%);
+      background-repeat: no-repeat;
+      background-size: 0% 42%;
+      background-position: 0 86%;
+      transition: background-size 1.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .marker-phrase.lit {
+      background-size: 100% 42%;
+    }
+
+    /* CIERRE EDITORIAL EN BLANCO */
+    .closing-section {
+      min-height: 85vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 12vh 0 16vh;
+      border-top: 1px solid rgba(18, 22, 19, 0.12);
+    }
+
+    .closing-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 48px;
+      align-items: center;
+      margin-top: 48px;
+    }
+
+    .closing-monumental {
+      font-family: var(--font-serif);
+      font-weight: 300;
+      font-size: clamp(54px, 8.5vw, 128px);
+      line-height: 0.92;
+      letter-spacing: -0.04em;
+      color: var(--color-press-black);
+      margin-top: 20px;
+    }
+
+    .closing-monumental em {
+      font-style: italic;
+      font-weight: 300;
+      background: linear-gradient(transparent 62%, var(--color-highlighter-green) 62%, var(--color-highlighter-green) 88%, transparent 88%);
+      padding: 0 6px;
+    }
+
+    @media (max-width: 900px) {
+      .hero-grid,
+      .closing-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+
+      .passage-layout,
+      .passage-layout.with-ascii-right,
+      .passage-layout.with-ascii-left {
+        display: flex;
+        flex-direction: column;
+        gap: 32px;
+      }
+
+      .passage-text-col,
+      .passage-ascii-col {
+        width: 100%;
+      }
+
+      .ascii-canvas {
+        height: 290px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="paper-grain" aria-hidden="true"></div>
+
+  <!-- Hilo botánico muy sutil -->
+  <svg class="thread-svg" viewBox="0 0 1200 1000" preserveAspectRatio="none" aria-hidden="true">
+    <path id="botanicalThread"
+          d="M 600,0 C 660,220 510,440 590,680 C 650,840 560,940 600,1000"
+          fill="none"
+          stroke="#93b799"
+          stroke-width="0.9"
+          stroke-dasharray="4 6" />
+  </svg>
+
+  <main>
+    <!-- PORTADA -->
+    <section class="hero">
+      <div class="hero-grid">
+        <div>
+          <h1 class="hero-title">Ashley<span class="dot">.</span></h1>
+          <p class="hero-salutation">Buenas tardes, señorita.</p>
+        </div>
+
+        <div class="ascii-frame">
+          <canvas class="ascii-canvas" data-flower="calla-single"></canvas>
+          <div class="ascii-caption">
+            <span><span class="ascii-dot"></span>ZANTEDESCHIA AETHIOPICA // I</span>
+            <span>ASCII BOTÁNICA</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="scroll-whisper">
+        <span class="scroll-line"></span>
+        <span>Deslizar para leer</span>
+      </div>
+    </section>
+
+    <!-- PÁRRAFO 1 -->
+    <section class="passage-section">
+      <div class="passage-layout">
+        <div class="passage-text-col">
+          <div class="hairline-rule"></div>
+          <p class="paragraph-body reveal-paragraph">
+            Le escribo esto en forma de carta, buscando un ritmo que al principio intente parecerse a los juegos de Cortázar, pero que inevitablemente termina rindiéndose ante lo que siento, <span class="marker-phrase">volviéndose únicamente mío, escrito con el pulso honesto de quien apenas empieza a descifrar la inmensidad que usted guarda.</span>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- PÁRRAFO 2 + FLOR ASCII -->
+    <section class="passage-section">
+      <div class="passage-layout with-ascii-right">
+        <div class="passage-text-col">
+          <div class="hairline-rule"></div>
+          <p class="paragraph-body reveal-paragraph">
+            Hoy el tiempo parece suspenderse por un momento para darle espacio a su existencia. Debe ser un día luminoso tanto para usted como para este mundo que, aunque a veces resulte frío o demasiado ruidoso, hoy tiene una razón genuina para celebrar: <span class="marker-phrase">tenerla un año más respirando aquí.</span> En lo que a mí respecta, celebro en silencio el milagro de haber coincidido con usted en este mismo fragmento de tiempo, de poder ser partícipe de la calidez que desprenden esos ojos suyos y de saber que su presencia sigue iluminando este espacio que compartimos.
+          </p>
+        </div>
+
+        <div class="passage-ascii-col">
+          <div class="ascii-frame">
+            <canvas class="ascii-canvas" data-flower="cosmos-bloom"></canvas>
+            <div class="ascii-caption">
+              <span><span class="ascii-dot"></span>FLORA DE LUZ // II</span>
+              <span>MATRIZ DE TINTA</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PÁRRAFO 3 -->
+    <section class="passage-section">
+      <div class="passage-layout">
+        <div class="passage-text-col">
+          <div class="hairline-rule"></div>
+          <p class="paragraph-body reveal-paragraph">
+            Sé que aún no conozco la totalidad de su universo ni cada rincón de lo que es. El tiempo que hemos tenido para encontrarnos ha sido breve, apenas un roce en la superficie de todo lo que usted significa; pero es precisamente esa brevedad la que despierta en mí un deseo paciente y profundo: <span class="marker-phrase">el de perderme en usted sin prisa, hasta aprenderme de memoria sus detalles más mínimos e invisibles.</span>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- PÁRRAFO 4 + FLOR ASCII -->
+    <section class="passage-section">
+      <div class="passage-layout with-ascii-left">
+        <div class="passage-ascii-col">
+          <div class="ascii-frame">
+            <canvas class="ascii-canvas" data-flower="lily-duo"></canvas>
+            <div class="ascii-caption">
+              <span><span class="ascii-dot"></span>BOTÁNICA SILENCIOSA // III</span>
+              <span>ESTUDIO EN BLANCO</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="passage-text-col">
+          <div class="hairline-rule"></div>
+          <p class="paragraph-body reveal-paragraph">
+            Quiero descubrir cómo se construyen sus mañanas, cuáles son sus virtudes más silenciosas, esos pequeños hábitos que repite sin darse cuenta cuando cree que nadie la observa. <span class="marker-phrase">Quiero saber qué es aquello que le eriza la piel, qué la inspira cuando el mundo se apaga,</span> cuáles son sus gustos más íntimos, sus miedos ocultos y esos sueños que sostiene con tanta delicadeza en el pecho.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- PÁRRAFO 5 -->
+    <section class="passage-section">
+      <div class="passage-layout">
+        <div class="passage-text-col">
+          <div class="hairline-rule"></div>
+          <p class="paragraph-body reveal-paragraph">
+            Sin que yo lo planeara, y con la suavidad con la que cambia la luz de la tarde, usted se ha vuelto el centro de todas mis inspiraciones. Cada pensamiento parece encontrar la forma de regresar a usted. Su rostro, con esa belleza serena y casi irreal, se ha convertido en la silueta favorita de mi memoria, un refugio al que vuelvo constantemente cuando busco calma. Y sus labios… sus labios son una huella que no busco en lo efímero de la piel, sino algo mucho más hondo y permanente: <span class="marker-phrase">una marca que quiero llevar tatuada directamente en el alma, incluso antes de haberlos tocado.</span>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- PÁRRAFO 6 + CIERRE EN FONDO BLANCO -->
+    <section class="closing-section">
+      <div class="passage-layout">
+        <div class="passage-text-col">
+          <div class="hairline-rule"></div>
+          <p class="paragraph-body reveal-paragraph">
+            <span class="marker-phrase">Feliz vuelta al sol, señorita.</span> Ojalá la vida sea generosa conmigo y me conceda el privilegio de seguir leyendo, página por página y sin afán, esta historia tan hermosa que apenas empiezo a descubrir en usted.
+          </p>
+        </div>
+      </div>
+
+      <div class="closing-grid">
+        <div>
+          <h2 class="closing-monumental">
+            Feliz vuelta<br />al <em>sol</em>.
+          </h2>
+        </div>
+
+        <div class="ascii-frame">
+          <canvas class="ascii-canvas" data-flower="bouquet-finale"></canvas>
+          <div class="ascii-caption">
+            <span><span class="ascii-dot"></span>RAMO DE ALCATRACES // IV</span>
+            <span>PARA ASHLEY</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    /* ==========================================================================
+       1. PREPARACIÓN DE PALABRAS PARA REVELADO CINÉTICO SUAVE AL SCROLL
+       ========================================================================== */
+    const paragraphs = document.querySelectorAll('.reveal-paragraph');
+
+    function wrapWordsInElement(root) {
+      const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, null, false);
+      const textNodes = [];
+      let currentNode;
+      while ((currentNode = walker.nextNode())) {
+        if (currentNode.nodeValue.trim().length > 0) {
+          textNodes.push(currentNode);
+        }
+      }
+
+      textNodes.forEach((node) => {
+        const parts = node.nodeValue.split(/(\s+)/);
+        const fragment = document.createDocumentFragment();
+        parts.forEach((part) => {
+          if (/^\s+$/.test(part)) {
+            fragment.appendChild(document.createTextNode(part));
+          } else if (part.length > 0) {
+            const span = document.createElement('span');
+            span.className = 'word';
+            span.textContent = part;
+            fragment.appendChild(span);
+          }
+        });
+        node.parentNode.replaceChild(fragment, node);
+      });
+    }
+
+    paragraphs.forEach((p) => wrapWordsInElement(p));
+
+    /* ==========================================================================
+       2. CÁLCULO DE PROGRESO DE LECTURA BASADO EN EL SCROLL
+       ========================================================================== */
+    let currentScroll = window.scrollY;
+    let targetScroll = window.scrollY;
+
+    window.addEventListener('scroll', () => {
+      targetScroll = window.scrollY;
+    }, { passive: true });
+
+    const rules = document.querySelectorAll('.hairline-rule');
+
+    function updateReadingReveal() {
+      currentScroll += (targetScroll - currentScroll) * 0.12;
+      const vh = window.innerHeight;
+
+      rules.forEach((rule) => {
+        const rect = rule.getBoundingClientRect();
+        if (rect.top < vh * 0.88) {
+          rule.classList.add('visible');
+        }
+      });
+
+      paragraphs.forEach((p) => {
+        const rect = p.getBoundingClientRect();
+        const words = p.querySelectorAll('.word');
+        const markers = p.querySelectorAll('.marker-phrase');
+
+        const startY = vh * 0.88;
+        const endY = vh * 0.34;
+        const rawProgress = (startY - rect.top) / (startY - endY);
+        const progress = Math.max(0, Math.min(1, rawProgress));
+
+        const revealCount = Math.floor(progress * words.length);
+
+        words.forEach((w, idx) => {
+          if (idx <= revealCount || progress >= 0.96) {
+            w.classList.add('revealed');
+          } else {
+            w.classList.remove('revealed');
+          }
+        });
+
+        markers.forEach((m) => {
+          if (progress > 0.62) {
+            m.classList.add('lit');
+          } else {
+            m.classList.remove('lit');
+          }
+        });
+      });
+
+      requestAnimationFrame(updateReadingReveal);
+    }
+
+    requestAnimationFrame(updateReadingReveal);
+
+    /* ==========================================================================
+       3. MOTOR DE FOTOGRAFÍA BOTÁNICA EN ARTE ASCII (ALCATRACES Y FLORES)
+       ========================================================================== */
+    const ASCII_RAMP = " .'`^\",:;Il!i><~+_-?][}{1)(|/tfjrxnuvczXYUJCLQ0OZmwqpdbkhao*#MW&8%B@$";
+
+    class AsciiBotanicalPlate {
+      constructor(canvas) {
+        this.canvas = canvas;
+        this.ctx = canvas.getContext('2d');
+        this.variant = canvas.dataset.flower || 'calla-single';
+        this.offscreen = document.createElement('canvas');
+        this.offCtx = this.offscreen.getContext('2d', { willReadFrequently: true });
+        this.cols = 68;
+        this.rows = 38;
+        this.resize();
+        window.addEventListener('resize', () => this.resize());
+      }
+
+      resize() {
+        const dpr = Math.min(window.devicePixelRatio || 1, 2);
+        const rect = this.canvas.getBoundingClientRect();
+        this.width = rect.width || 420;
+        this.height = rect.height || 340;
+        this.canvas.width = this.width * dpr;
+        this.canvas.height = this.height * dpr;
+        this.ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+        this.cols = Math.max(46, Math.floor(this.width / 6.8));
+        this.rows = Math.max(28, Math.floor(this.height / 9.2));
+        this.offscreen.width = this.cols;
+        this.offscreen.height = this.rows;
+      }
+
+      drawCallaCup(ctx, cx, cy, scale, tilt, time) {
+        ctx.save();
+        ctx.translate(cx, cy);
+        ctx.rotate(tilt + Math.sin(time * 0.9) * 0.04);
+        ctx.scale(scale, scale);
+
+        // Tallo curvo
+        ctx.strokeStyle = 'rgb(115, 115, 115)';
+        ctx.lineWidth = 2.2;
+        ctx.beginPath();
+        ctx.moveTo(0, 6);
+        ctx.quadraticCurveTo(-3, 20, -1, 34);
+        ctx.stroke();
+
+        // Espata del alcatraz (copa escultórica)
+        const grad = ctx.createRadialGradient(0, -4, 1, 0, -2, 16);
+        grad.addColorStop(0, 'rgb(250, 250, 250)');
+        grad.addColorStop(0.55, 'rgb(185, 185, 185)');
+        grad.addColorStop(1, 'rgb(55, 55, 55)');
+
+        ctx.fillStyle = grad;
+        ctx.beginPath();
+        ctx.moveTo(0, 9);
+        ctx.bezierCurveTo(-13, 2, -15, -13, -2, -18);
+        ctx.bezierCurveTo(3, -20, 14, -12, 11, 0);
+        ctx.bezierCurveTo(9, 6, 4, 8, 0, 9);
+        ctx.closePath();
+        ctx.fill();
+
+        // Pliegue interior oscuro de la flor
+        ctx.fillStyle = 'rgb(28, 28, 28)';
+        ctx.beginPath();
+        ctx.ellipse(0.5, -5, 4.2, 7.5, 0.12, 0, Math.PI * 2);
+        ctx.fill();
+
+        // Espádice (pistilo central brillante, canal G=255 para marcador verde)
+        ctx.strokeStyle = 'rgb(40, 255, 90)';
+        ctx.lineWidth = 1.7;
+        ctx.beginPath();
+        ctx.moveTo(0, 2);
+        ctx.lineTo(1.5, -11);
+        ctx.stroke();
+
+        ctx.restore();
+      }
+
+      drawRadialFlower(ctx, cx, cy, radius, petals, time) {
+        ctx.save();
+        ctx.translate(cx, cy);
+        ctx.rotate(time * 0.12);
+
+        for (let i = 0; i < petals; i++) {
+          const angle = (i / petals) * Math.PI * 2;
+          ctx.save();
+          ctx.rotate(angle);
+
+          const pGrad = ctx.createLinearGradient(0, 0, radius, 0);
+          pGrad.addColorStop(0, 'rgb(60, 60, 60)');
+          pGrad.addColorStop(0.6, 'rgb(215, 215, 215)');
+          pGrad.addColorStop(1, 'rgb(95, 95, 95)');
+
+          ctx.fillStyle = pGrad;
+          ctx.beginPath();
+          ctx.ellipse(radius * 0.56, 0, radius * 0.48, radius * 0.19, 0, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.restore();
+        }
+
+        // Centro botánico verde brillante
+        ctx.fillStyle = 'rgb(30, 255, 80)';
+        ctx.beginPath();
+        ctx.arc(0, 0, radius * 0.2, 0, Math.PI * 2);
+        ctx.fill();
+
+        ctx.restore();
+      }
+
+      renderSceneToOffscreen(time) {
+        const ctx = this.offCtx;
+        const w = this.cols;
+        const h = this.rows;
+
+        ctx.fillStyle = 'rgb(0, 0, 0)';
+        ctx.fillRect(0, 0, w, h);
+
+        const sway = Math.sin(time * 0.8 + window.scrollY * 0.004) * 0.06;
+
+        if (this.variant === 'calla-single') {
+          this.drawCallaCup(ctx, w * 0.5, h * 0.5, Math.min(w, h) / 34, -0.08 + sway, time);
+        } else if (this.variant === 'cosmos-bloom') {
+          ctx.strokeStyle = 'rgb(110, 110, 110)';
+          ctx.lineWidth = 1.4;
+          ctx.beginPath();
+          ctx.moveTo(w * 0.5, h * 0.96);
+          ctx.quadraticCurveTo(w * 0.44, h * 0.7, w * 0.52, h * 0.44);
+          ctx.stroke();
+          this.drawRadialFlower(ctx, w * 0.52, h * 0.42, Math.min(w, h) * 0.36, 8, time);
+        } else if (this.variant === 'lily-duo') {
+          this.drawCallaCup(ctx, w * 0.36, h * 0.54, Math.min(w, h) / 40, -0.22 + sway, time);
+          this.drawCallaCup(ctx, w * 0.66, h * 0.44, Math.min(w, h) / 36, 0.16 - sway, time + 1.4);
+        } else if (this.variant === 'bouquet-finale') {
+          this.drawCallaCup(ctx, w * 0.3, h * 0.56, Math.min(w, h) / 44, -0.28 + sway, time);
+          this.drawCallaCup(ctx, w * 0.5, h * 0.42, Math.min(w, h) / 35, 0.02 - sway, time + 1.1);
+          this.drawCallaCup(ctx, w * 0.71, h * 0.54, Math.min(w, h) / 42, 0.26 + sway, time + 2.2);
+        }
+      }
+
+      render(time) {
+        this.renderSceneToOffscreen(time);
+
+        const imgData = this.offCtx.getImageData(0, 0, this.cols, this.rows).data;
+        const ctx = this.ctx;
+
+        ctx.clearRect(0, 0, this.width, this.height);
+
+        const cellW = this.width / this.cols;
+        const cellH = this.height / this.rows;
+
+        ctx.font = `400 ${Math.max(8, Math.floor(cellH * 0.98))}px "JetBrains Mono", monospace`;
+        ctx.textBaseline = 'top';
+
+        for (let y = 0; y < this.rows; y++) {
+          for (let x = 0; x < this.cols; x++) {
+            const idx = (y * this.cols + x) * 4;
+            const r = imgData[idx];
+            const g = imgData[idx + 1];
+            const b = imgData[idx + 2];
+
+            // Pistilo / polen en Highlighter Green (#2bee4b)
+            if (g > 210 && r < 80) {
+              ctx.fillStyle = '#18b934';
+              ctx.fillText('*', x * cellW, y * cellH);
+              continue;
+            }
+
+            const lum = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
+
+            if (lum < 0.04) {
+              if ((x + y) % 7 === 0) {
+                ctx.fillStyle = 'rgba(81, 98, 84, 0.18)';
+                ctx.fillText('·', x * cellW, y * cellH);
+              }
+              continue;
+            }
+
+            const charIndex = Math.min(
+              ASCII_RAMP.length - 1,
+              Math.floor(lum * (ASCII_RAMP.length - 1))
+            );
+            const ch = ASCII_RAMP[charIndex];
+
+            const alpha = Math.min(1, 0.25 + lum * 0.85);
+            ctx.fillStyle = `rgba(18, 22, 19, ${alpha.toFixed(2)})`;
+            ctx.fillText(ch, x * cellW, y * cellH);
+          }
+        }
+      }
+    }
+
+    const asciiPlates = Array.from(document.querySelectorAll('.ascii-canvas')).map(
+      (c) => new AsciiBotanicalPlate(c)
+    );
+
+    function animateAscii(now) {
+      const t = now * 0.001;
+      asciiPlates.forEach((plate) => plate.render(t));
+      requestAnimationFrame(animateAscii);
+    }
+
+    requestAnimationFrame(animateAscii);
+  </script>
+</body>
+</html>
