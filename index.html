@@ -2,14 +2,16 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>Ashley.</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@200;300;400;500;600&family=JetBrains+Mono:wght@300;400&family=Playfair+Display:ital,wght@0,400;1,300;1,400&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Instrument+Serif:ital@0;1&family=Inter:wght@200;300;400;500&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet" />
+
   <style>
     :root {
-      /* Tokens exactos New Form — Solo sobre lienzo Bone White */
+      /* New Form Tokens — Strictly Light Bone White Canvas */
       --color-bone-white: #fafffa;
       --color-press-black: #121613;
       --color-typesetter-ink: #000000;
@@ -20,848 +22,771 @@
       --color-shadow-moss: #93b799;
       --color-echo-green: #c4e4c9;
 
-      /* Tipografía */
-      --font-twk-lausanne: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      --font-pp-mondwest: 'Playfair Display', 'Times New Roman', serif;
-      --font-editorial-new: 'Cormorant Garamond', Georgia, serif;
-      --font-mono-ascii: 'JetBrains Mono', monospace;
+      /* Typography */
+      --font-lausanne: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-mondwest: 'Instrument Serif', Georgia, serif;
+      --font-editorial: 'Cormorant Garamond', Georgia, serif;
+      --font-ascii: 'JetBrains Mono', monospace;
     }
 
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
+      -webkit-tap-highlight-color: transparent;
     }
 
-    html, body {
+    html {
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+
+    html::-webkit-scrollbar {
+      display: none;
+    }
+
+    body {
       background-color: var(--color-bone-white);
       color: var(--color-press-black);
-      font-family: var(--font-editorial-new);
+      font-family: var(--font-editorial);
+      overflow-x: hidden;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
-      overflow-x: hidden;
     }
 
-    ::selection {
-      background: var(--color-highlighter-green);
-      color: var(--color-typesetter-ink);
-    }
-
-    /* Textura casi imperceptible de papel algodón sobre #fafffa */
-    .paper-grain {
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: 90;
-      opacity: 0.032;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 220 220' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-    }
-
-    /* Hilo caligráfico continuo de fondo que acompaña la lectura */
-    .caligraphic-svg {
-      position: fixed;
-      top: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 100%;
-      max-width: 1400px;
-      height: 100vh;
-      pointer-events: none;
-      z-index: 1;
-    }
-
-    .caligraphic-path {
-      fill: none;
-      stroke: var(--color-shadow-moss);
-      stroke-width: 0.85;
-      opacity: 0.35;
-      stroke-linecap: round;
-    }
-
-    /* Contenedor Editorial */
-    .editorial-stream {
-      position: relative;
-      z-index: 5;
-      max-width: 1220px;
-      margin: 0 auto;
-      padding: 0 36px;
-    }
-
-    /* ==========================================================================
-       PORTADA MINIMALISTA
-       ========================================================================== */
-    .hero-sheet {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      padding: 9vh 0 6vh;
-      position: relative;
-    }
-
-    .hero-centerpiece {
-      margin: auto 0;
-      display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
-      gap: 48px;
-      align-items: center;
-    }
-
-    .hero-name {
-      font-family: var(--font-pp-mondwest);
+    /* Tipografía Monumental (PP Mondwest substitute) */
+    .font-mondwest {
+      font-family: var(--font-mondwest);
       font-weight: 400;
-      font-size: clamp(78px, 14vw, 215px);
-      line-height: 0.88;
+      line-height: 0.9;
       letter-spacing: -0.04em;
-      color: var(--color-press-black);
-      user-select: none;
     }
 
-    .hero-name .green-period {
-      color: var(--color-highlighter-green);
-      display: inline-block;
+    /* Prosa Poética Han Kang (Editorial New / Cormorant light) */
+    .font-poetic {
+      font-family: var(--font-editorial);
+      font-weight: 300;
+      line-height: 1.68;
+      letter-spacing: -0.01em;
     }
 
-    .hero-greeting {
-      margin-top: 28px;
-      font-family: var(--font-editorial-new);
-      font-weight: 400;
-      font-style: italic;
-      font-size: clamp(26px, 3vw, 38px);
-      line-height: 1.15;
-      letter-spacing: -0.015em;
-      color: var(--color-press-black);
+    /* Micro-etiquetas susurradas (TWK Lausanne 11px) */
+    .micro-whisper {
+      font-family: var(--font-lausanne);
+      font-size: 11px;
+      font-weight: 500;
+      line-height: 1.1;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
     }
 
-    /* Tarjeta de Fotografía Floral en Arte ASCII */
-    .ascii-photo-card {
-      position: relative;
+    /* Placas Botánicas Fotográficas en Matriz ASCII */
+    .ascii-plate {
       border-radius: 14px;
-      border: 1px solid rgba(18, 22, 19, 0.14);
-      background: var(--color-bone-white);
-      padding: 18px 18px 14px;
       overflow: hidden;
-      transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.5s ease;
-    }
-
-    .ascii-photo-card:hover {
-      border-color: var(--color-press-black);
+      border: 1px solid rgba(18, 22, 19, 0.12);
+      background-color: var(--color-bone-white);
+      will-change: transform;
+      position: relative;
     }
 
     .ascii-canvas {
       display: block;
       width: 100%;
-      height: 360px;
-      border-radius: 8px;
-      cursor: crosshair;
+      height: 100%;
     }
 
-    .ascii-meta {
-      margin-top: 12px;
-      padding-top: 10px;
-      border-top: 1px solid rgba(18, 22, 19, 0.1);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-family: var(--font-twk-lausanne);
-      font-size: 10px;
-      font-weight: 500;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      color: var(--color-newsprint-gray);
-    }
-
-    .ascii-meta .green-dot {
+    /* Palabras animadas por scroll (blur + translateY + opacity) */
+    .k-word {
       display: inline-block;
-      width: 6px;
-      height: 6px;
-      border-radius: 9999px;
-      background: var(--color-highlighter-green);
-      margin-right: 6px;
-      vertical-align: middle;
+      will-change: transform, opacity, filter;
+      transition: color 0.4s ease;
     }
 
-    .scroll-whisper {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      font-family: var(--font-twk-lausanne);
-      font-size: 11px;
-      font-weight: 500;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: var(--color-newsprint-gray);
-    }
-
-    .scroll-whisper-line {
-      width: 48px;
-      height: 1px;
-      background: var(--color-muted-sage);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .scroll-whisper-line::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: var(--color-press-black);
-      animation: traceSlide 2.6s cubic-bezier(0.16, 1, 0.3, 1) infinite;
-    }
-
-    @keyframes traceSlide {
-      0% { transform: translateX(-100%); }
-      50% { transform: translateX(0%); }
-      100% { transform: translateX(100%); }
-    }
-
-    /* ==========================================================================
-       PASOS DE LA CARTA (SCROLLYTELLING CON EL TEXTO ÍNTEGRO ORIGINAL)
-       ========================================================================== */
-    .letter-section {
-      min-height: 82vh;
-      display: flex;
-      align-items: center;
-      padding: 12vh 0;
-      position: relative;
-    }
-
-    .section-grid {
-      width: 100%;
-      display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap: 32px;
-      align-items: center;
-    }
-
-    .col-text-wide {
-      grid-column: 2 / 11;
-    }
-
-    .col-text-left {
-      grid-column: 1 / 8;
-    }
-
-    .col-ascii-right {
-      grid-column: 8 / 13;
-    }
-
-    .col-ascii-left {
-      grid-column: 1 / 6;
-    }
-
-    .col-text-right {
-      grid-column: 6 / 13;
-    }
-
-    .hairline-divider {
-      width: 100%;
-      height: 1px;
-      background: rgba(18, 22, 19, 0.14);
-      margin-bottom: 28px;
-      transform-origin: left center;
-      transform: scaleX(0);
-      transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    .hairline-divider.drawn {
-      transform: scaleX(1);
-    }
-
-    .letter-paragraph {
-      font-family: var(--font-editorial-new);
-      font-weight: 400;
-      font-size: clamp(23px, 2.55vw, 35px);
-      line-height: 1.46;
-      letter-spacing: -0.012em;
-      color: var(--color-press-black);
-    }
-
-    /* Palabras animadas con el scroll al estilo poético de Han Kang */
-    .word-unit {
-      display: inline-block;
-      opacity: 0.12;
-      filter: blur(5px);
-      transform: translateY(8px);
-      transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1),
-                  filter 0.65s cubic-bezier(0.16, 1, 0.3, 1),
-                  transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
-      will-change: opacity, filter, transform;
-    }
-
-    .word-unit.revealed {
-      opacity: 1;
-      filter: blur(0px);
-      transform: translateY(0);
-    }
-
-    /* Subrayado Highlighter Green (#2bee4b) */
+    /* Subrayado orgánico Highlighter Green (#2bee4b) */
     .marker-phrase {
-      background-image: linear-gradient(120deg, var(--color-highlighter-green) 0%, var(--color-highlighter-green) 100%);
+      position: relative;
+      display: inline;
+      background-image: linear-gradient(120deg, rgba(43, 238, 75, 0.42) 0%, rgba(43, 238, 75, 0.42) 100%);
       background-repeat: no-repeat;
-      background-size: 0% 38%;
+      background-size: calc(var(--hl-progress, 0) * 100%) 38%;
       background-position: 0 86%;
-      transition: background-size 1.2s cubic-bezier(0.16, 1, 0.3, 1);
       padding: 0 2px;
+      border-radius: 2px;
     }
 
-    .marker-phrase.lit {
-      background-size: 100% 38%;
-    }
-
-    /* ==========================================================================
-       DESPEDIDA SOBRIA EN BLANCO (SIN CAMBIO DE FONDO NI ANIMACIÓN FINAL OSCURA)
-       ========================================================================== */
-    .letter-closing {
-      padding: 10vh 0 18vh;
-      border-top: 1px solid rgba(18, 22, 19, 0.14);
-      margin-top: 4vh;
-    }
-
-    .closing-grid {
-      display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 48px;
-      align-items: end;
-      margin-top: 48px;
-    }
-
-    .closing-monumental {
-      font-family: var(--font-pp-mondwest);
-      font-weight: 400;
-      font-size: clamp(46px, 7.5vw, 112px);
-      line-height: 0.92;
-      letter-spacing: -0.04em;
-      color: var(--color-press-black);
-    }
-
-    .closing-monumental em {
-      font-family: var(--font-editorial-new);
-      font-weight: 300;
-      font-style: italic;
-      background: linear-gradient(180deg, transparent 58%, var(--color-highlighter-green) 58%, var(--color-highlighter-green) 90%, transparent 90%);
-      padding: 0 6px;
-    }
-
-    @media (max-width: 920px) {
-      . editorial-stream {
-        padding: 0 22px;
+    /* Línea vertical de aliento inicial */
+    @keyframes breatheLine {
+      0%, 100% {
+        transform: scaleY(0.35);
+        transform-origin: top;
+        opacity: 0.25;
       }
-      .hero-centerpiece,
-      .closing-grid {
-        grid-template-columns: 1fr;
-        gap: 32px;
+      50% {
+        transform: scaleY(1);
+        transform-origin: top;
+        opacity: 0.75;
       }
-      .col-text-wide,
-      .col-text-left,
-      .col-ascii-right,
-      .col-ascii-left,
-      .col-text-right {
-        grid-column: 1 / -1;
-      }
-      .ascii-canvas {
-        height: 290px;
-      }
+    }
+
+    .scroll-breath-line {
+      width: 1px;
+      height: 88px;
+      background: linear-gradient(to bottom, var(--color-press-black) 70%, var(--color-highlighter-green) 100%);
+      animation: breatheLine 3.6s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+    }
+
+    /* Contenedor de mundo suavizado por Lerp */
+    #smooth-wrapper {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      will-change: transform;
+      z-index: 10;
     }
   </style>
 </head>
 <body>
 
-  <!-- Textura de papel sobre #fafffa -->
-  <div class="paper-grain"></div>
-
-  <!-- Hilo caligráfico sutil que se dibuja mientras se baja por la carta -->
-  <svg class="caligraphic-svg" viewBox="0 0 1400 1000" preserveAspectRatio="none" aria-hidden="true">
-    <path id="scrollThread" class="caligraphic-path"
-          d="M 700,0 C 760,210 610,390 690,590 C 770,790 640,910 700,1000" />
+  <!-- =====================================================================
+       TEXTURA DE GRANO DE PELÍCULA (FRACTAL NOISE 0.025)
+       ===================================================================== -->
+  <svg class="fixed inset-0 w-full h-full pointer-events-none z-50 opacity-[0.028]" aria-hidden="true">
+    <filter id="paper-grain">
+      <feTurbulence type="fractalNoise" baseFrequency="0.82" numOctaves="3" stitchTiles="stitch" />
+      <feColorMatrix type="saturate" values="0" />
+    </filter>
+    <rect width="100%" height="100%" filter="url(#paper-grain)" />
   </svg>
 
-  <main class="editorial-stream">
+  <!-- =====================================================================
+       MUNDO DE SCROLL CINEMÁTICO (FONDO 100% BONE WHITE #FAFFFA, SIN UI)
+       ===================================================================== -->
+  <div id="smooth-wrapper">
+    <main id="smooth-content" class="relative w-full max-w-[1400px] mx-auto px-6 sm:px-14 md:px-24">
 
-    <!-- PORTADA CON EL SALUDO ORIGINAL Y PRIMERA FOTOGRAFÍA DE ALCATRAZ EN ASCII -->
-    <section class="hero-sheet">
-      <div></div>
+      <!-- HILO CALIGRÁFICO BOTÁNICO EN SVG QUE RECORRE LA CARTA -->
+      <svg
+        id="calligraphic-thread-svg"
+        class="absolute top-0 left-0 w-full h-full pointer-events-none z-0 overflow-visible"
+        preserveAspectRatio="none"
+        viewBox="0 0 1000 6200"
+      >
+        <path
+          id="thread-ink"
+          d="M 500 520
+             C 500 920, 260 1180, 320 1620
+             C 380 2060, 710 2320, 650 2820
+             C 590 3320, 270 3640, 350 4160
+             C 430 4680, 680 4980, 500 5480
+             L 500 5920"
+          fill="none"
+          stroke="#121613"
+          stroke-opacity="0.09"
+          stroke-width="1"
+        />
+        <path
+          id="thread-green"
+          d="M 500 520
+             C 500 920, 260 1180, 320 1620
+             C 380 2060, 710 2320, 650 2820
+             C 590 3320, 270 3640, 350 4160
+             C 430 4680, 680 4980, 500 5480
+             L 500 5920"
+          fill="none"
+          stroke="#2bee4b"
+          stroke-opacity="0.65"
+          stroke-width="1.35"
+        />
+      </svg>
 
-      <div class="hero-centerpiece">
-        <div>
-          <h1 class="hero-name">Ashley<span class="green-period">.</span></h1>
-          <p class="hero-greeting">Buenas tardes, señorita.</p>
-        </div>
+      <!-- =================================================================
+           APERTURA / PORTADA CON SALUDO ORIGINAL
+           ================================================================= -->
+      <section class="relative min-h-screen flex flex-col items-center justify-center text-center z-10 py-24">
+        <div id="hero-block" class="flex flex-col items-center">
+          <h1
+            class="font-mondwest text-[clamp(112px,21vw,295px)] text-[#121613] select-none tracking-[-0.04em] leading-[0.88]"
+          >
+            Ashley<span class="text-[#2bee4b]">.</span>
+          </h1>
 
-        <figure class="ascii-photo-card" data-parallax="0.06">
-          <canvas class="ascii-canvas" data-flower="calla-single"></canvas>
-          <figcaption class="ascii-meta">
-            <span><span class="green-dot"></span>ZANTEDESCHIA AETHIOPICA · I</span>
-            <span>ESTUDIO FLORAL ASCII</span>
-          </figcaption>
-        </figure>
-      </div>
-
-      <div class="scroll-whisper">
-        <div class="scroll-whisper-line"></div>
-        <span>Deslizar para leer</span>
-      </div>
-    </section>
-
-    <!-- PÁRRAFO 1 (TEXTO ORIGINAL ÍNTEGRO) -->
-    <section class="letter-section">
-      <div class="section-grid">
-        <div class="col-text-wide">
-          <div class="hairline-divider"></div>
-          <p class="letter-paragraph" data-reveal-paragraph>
-            Le escribo esto en forma de carta, buscando un ritmo que al principio intente parecerse a los juegos de Cortázar, pero que inevitablemente termina rindiéndose ante lo que siento, <span class="marker-phrase">volviéndose únicamente mío, escrito con el pulso honesto de quien apenas empieza a descifrar la inmensidad que usted guarda.</span>
+          <p
+            class="font-poetic italic text-[clamp(22px,2.5vw,32px)] text-[#516254] mt-10 tracking-[-0.01em]"
+          >
+            Buenas tardes, señorita.
           </p>
         </div>
-      </div>
-    </section>
 
-    <!-- PÁRRAFO 2 + SEGUNDA LÁMINA DE FLORES EN ASCII -->
-    <section class="letter-section">
-      <div class="section-grid">
-        <div class="col-text-left">
-          <div class="hairline-divider"></div>
-          <p class="letter-paragraph" data-reveal-paragraph>
-            Hoy el tiempo parece suspenderse por un momento para darle espacio a su existencia. Debe ser un día luminoso tanto para usted como para este mundo que, aunque a veces resulte frío o demasiado ruidoso, hoy tiene una razón genuina para celebrar: <span class="marker-phrase">tenerla un año más respirando aquí.</span> En lo que a mí respecta, celebro en silencio el milagro de haber coincidido con usted en este mismo fragmento de tiempo, de poder ser partícipe de la calidez que desprenden esos ojos suyos y de saber que su presencia sigue iluminando este espacio que compartimos.
+        <!-- Línea de 1px que respira hacia abajo invitando al scroll -->
+        <div class="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center">
+          <div class="scroll-breath-line"></div>
+        </div>
+      </section>
+
+      <!-- =================================================================
+           PÁRRAFO I — EL PULSO HONESTO + LÁMINA ASCII DE ALCATRAZ I
+           ================================================================= -->
+      <section class="relative min-h-[95vh] flex items-center z-10 py-24">
+        <div class="w-full grid grid-cols-1 md:grid-cols-12 gap-12 items-center">
+          <div class="md:col-span-7 md:col-start-1">
+            <span class="micro-whisper text-[#516254] block mb-6">01</span>
+            <p
+              class="font-poetic text-[clamp(22px,2.55vw,33px)] text-[#121613] kinetic-paragraph"
+            >
+              Le escribo esto en forma de carta, buscando un ritmo que al principio intente parecerse a los juegos de Cortázar, pero que inevitablemente termina rindiéndose ante lo que siento, volviéndose únicamente mío, escrito con el
+              <span class="marker-phrase" data-highlight>pulso honesto</span>
+              de quien apenas empieza a descifrar la inmensidad que usted guarda.
+            </p>
+          </div>
+
+          <div class="md:col-span-4 md:col-start-9 flex justify-end">
+            <figure
+              class="ascii-plate w-full max-w-[300px] h-[360px] parallax-tile"
+              data-speed="-0.1"
+              data-rot="1.8"
+            >
+              <canvas class="ascii-canvas" data-flower="calla-single"></canvas>
+              <figcaption class="micro-whisper text-[#516254] absolute bottom-3 left-4 opacity-70">
+                FIG. I // ZANTEDESCHIA ASCII
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <!-- =================================================================
+           PÁRRAFO II — EL TIEMPO SE SUSPENDE Y EL MILAGRO DE COINCIDIR
+           ================================================================= -->
+      <section class="relative min-h-[100vh] flex items-center z-10 py-24">
+        <div class="w-full grid grid-cols-1 md:grid-cols-12 gap-12 items-center">
+          <div class="md:col-span-4 md:col-start-1 order-2 md:order-1 flex justify-start">
+            <figure
+              class="ascii-plate w-full max-w-[290px] h-[340px] parallax-tile"
+              data-speed="0.12"
+              data-rot="-2.1"
+            >
+              <canvas class="ascii-canvas" data-flower="cosmos-bloom"></canvas>
+              <figcaption class="micro-whisper text-[#516254] absolute bottom-3 left-4 opacity-70">
+                FIG. II // FLORA DE LUZ
+              </figcaption>
+            </figure>
+          </div>
+
+          <div class="md:col-span-7 md:col-start-6 order-1 md:order-2">
+            <span class="micro-whisper text-[#516254] block mb-6">02</span>
+            <p
+              class="font-poetic text-[clamp(22px,2.55vw,33px)] text-[#121613] kinetic-paragraph"
+            >
+              Hoy el tiempo parece suspenderse por un momento para darle espacio a su existencia. Debe ser un día luminoso tanto para usted como para este mundo que, aunque a veces resulte frío o demasiado ruidoso, hoy tiene una razón genuina para celebrar:
+              <span class="marker-phrase" data-highlight>tenerla un año más respirando aquí</span>.
+              En lo que a mí respecta, celebro en silencio el milagro de haber coincidido con usted en este mismo fragmento de tiempo, de poder ser partícipe de la calidez que desprenden esos ojos suyos y de saber que su presencia sigue iluminando este espacio que compartimos.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- =================================================================
+           PÁRRAFO III — UN DESEO PACIENTE Y PROFUNDO
+           ================================================================= -->
+      <section class="relative min-h-[92vh] flex items-center z-10 py-24">
+        <div class="w-full md:w-9/12 lg:w-8/12 mx-auto">
+          <span class="micro-whisper text-[#516254] block mb-6">03</span>
+          <p
+            class="font-poetic text-[clamp(22px,2.55vw,33px)] text-[#121613] kinetic-paragraph"
+          >
+            Sé que aún no conozco la totalidad de su universo ni cada rincón de lo que es. El tiempo que hemos tenido para encontrarnos ha sido breve, apenas un roce en la superficie de todo lo que usted significa; pero es precisamente esa brevedad la que despierta en mí un deseo paciente y profundo: el de
+            <span class="marker-phrase" data-highlight>perderme en usted sin prisa</span>,
+            hasta aprenderme de memoria sus detalles más mínimos e invisibles.
           </p>
         </div>
+      </section>
 
-        <div class="col-ascii-right">
-          <figure class="ascii-photo-card" data-parallax="-0.05">
-            <canvas class="ascii-canvas" data-flower="calla-duo"></canvas>
-            <figcaption class="ascii-meta">
-              <span><span class="green-dot"></span>BOTÁNICA DE LUZ · II</span>
-              <span>TRAMA MONOCROMA</span>
-            </figcaption>
+      <!-- =================================================================
+           PÁRRAFO IV — SUS MAÑANAS, VIRTUDES Y SUEÑOS + LÁMINA ASCII III
+           ================================================================= -->
+      <section class="relative min-h-[100vh] flex items-center z-10 py-24">
+        <div class="w-full grid grid-cols-1 md:grid-cols-12 gap-12 items-center">
+          <div class="md:col-span-7 md:col-start-2">
+            <span class="micro-whisper text-[#516254] block mb-6">04</span>
+            <p
+              class="font-poetic text-[clamp(22px,2.55vw,33px)] text-[#121613] kinetic-paragraph"
+            >
+              Quiero descubrir cómo se construyen sus mañanas, cuáles son sus virtudes más silenciosas, esos pequeños hábitos que repite sin darse cuenta cuando cree que nadie la observa. Quiero saber qué es aquello que le eriza la piel, qué la inspira cuando el mundo se apaga, cuáles son sus gustos más íntimos, sus miedos ocultos y esos
+              <span class="marker-phrase" data-highlight>sueños que sostiene con tanta delicadeza</span>
+              en el pecho.
+            </p>
+          </div>
+
+          <div class="md:col-span-3 md:col-start-10 flex justify-end">
+            <figure
+              class="ascii-plate w-full max-w-[280px] h-[360px] parallax-tile"
+              data-speed="-0.14"
+              data-rot="2.4"
+            >
+              <canvas class="ascii-canvas" data-flower="calla-duet"></canvas>
+              <figcaption class="micro-whisper text-[#516254] absolute bottom-3 left-4 opacity-70">
+                FIG. III // CÁLIZ EN SOMBRA
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <!-- =================================================================
+           PÁRRAFO V — LA LUZ DE LA TARDE Y LA MARCA EN EL ALMA
+           ================================================================= -->
+      <section class="relative min-h-[100vh] flex items-center z-10 py-24">
+        <div class="w-full md:w-9/12 lg:w-8/12 md:ml-auto md:mr-[6%]">
+          <span class="micro-whisper text-[#516254] block mb-6">05</span>
+          <p
+            class="font-poetic text-[clamp(22px,2.55vw,33px)] text-[#121613] kinetic-paragraph"
+          >
+            Sin que yo lo planeara, y con la suavidad con la que cambia la luz de la tarde, usted se ha vuelto el centro de todas mis inspiraciones. Cada pensamiento parece encontrar la forma de regresar a usted. Su rostro, con esa belleza serena y casi irreal, se ha convertido en la silueta favorita de mi memoria, un refugio al que vuelvo constantemente cuando busco calma. Y sus labios… sus labios son una huella que no busco en lo efímero de la piel, sino algo mucho más hondo y permanente:
+            <span class="marker-phrase" data-highlight>una marca que quiero llevar tatuada directamente en el alma</span>,
+            incluso antes de haberlos tocado.
+          </p>
+        </div>
+      </section>
+
+      <!-- =================================================================
+           PÁRRAFO VI — DESPEDIDA EN FONDO BLANCO (#FAFFFA) + SELLO FLORAL ASCII
+           ================================================================= -->
+      <section
+        id="farewell-section"
+        class="relative min-h-screen flex flex-col items-center justify-center text-center z-10 py-32"
+      >
+        <div class="max-w-[820px] mx-auto px-4 flex flex-col items-center">
+          <span class="micro-whisper text-[#516254] block mb-8 tracking-[0.14em]">
+            06 // FELIZ VUELTA AL SOL
+          </span>
+
+          <p
+            class="font-poetic text-[clamp(24px,2.9vw,38px)] text-[#121613] kinetic-paragraph mb-14"
+          >
+            Feliz vuelta al sol, señorita. Ojalá la vida sea generosa conmigo y me conceda el privilegio de seguir leyendo,
+            <span class="marker-phrase" data-highlight>página por página y sin afán</span>,
+            esta historia tan hermosa que apenas empiezo a descubrir en usted.
+          </p>
+
+          <!-- Lámina botánica ASCII silenciosa de cierre sobre el papel blanco -->
+          <figure class="ascii-plate w-[260px] sm:w-[300px] h-[300px] mb-12">
+            <canvas class="ascii-canvas" data-flower="lily-crown"></canvas>
           </figure>
+
+          <div class="mt-2">
+            <h2 class="font-mondwest text-[clamp(64px,11vw,145px)] text-[#121613] leading-[0.9] tracking-[-0.04em]">
+              Ashley<span class="text-[#2bee4b]">.</span>
+            </h2>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- PÁRRAFO 3 (TEXTO ORIGINAL ÍNTEGRO) -->
-    <section class="letter-section">
-      <div class="section-grid">
-        <div class="col-text-wide">
-          <div class="hairline-divider"></div>
-          <p class="letter-paragraph" data-reveal-paragraph>
-            Sé que aún no conozco la totalidad de su universo ni cada rincón de lo que es. El tiempo que hemos tenido para encontrarnos ha sido breve, apenas un roce en la superficie de todo lo que usted significa; pero es precisamente esa brevedad la que despierta en mí un deseo paciente y profundo: <span class="marker-phrase">el de perderme en usted sin prisa, hasta aprenderme de memoria sus detalles más mínimos e invisibles.</span>
-          </p>
-        </div>
-      </div>
-    </section>
+    </main>
+  </div>
 
-    <!-- PÁRRAFO 4 + TERCERA LÁMINA DE FLORES EN ASCII -->
-    <section class="letter-section">
-      <div class="section-grid">
-        <div class="col-ascii-left">
-          <figure class="ascii-photo-card" data-parallax="0.05">
-            <canvas class="ascii-canvas" data-flower="lotus-bloom"></canvas>
-            <figcaption class="ascii-meta">
-              <span><span class="green-dot"></span>COROLA SILENCIOSA · III</span>
-              <span>CÁMARA DE TINTA</span>
-            </figcaption>
-          </figure>
-        </div>
-
-        <div class="col-text-right">
-          <div class="hairline-divider"></div>
-          <p class="letter-paragraph" data-reveal-paragraph>
-            Quiero descubrir cómo se construyen sus mañanas, cuáles son sus virtudes más silenciosas, esos pequeños hábitos que repite sin darse cuenta cuando cree que nadie la observa. Quiero saber qué es aquello que le eriza la piel, <span class="marker-phrase">qué la inspira cuando el mundo se apaga, cuáles son sus gustos más íntimos, sus miedos ocultos y esos sueños que sostiene con tanta delicadeza en el pecho.</span>
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- PÁRRAFO 5 (TEXTO ORIGINAL ÍNTEGRO) -->
-    <section class="letter-section">
-      <div class="section-grid">
-        <div class="col-text-wide">
-          <div class="hairline-divider"></div>
-          <p class="letter-paragraph" data-reveal-paragraph>
-            Sin que yo lo planeara, y con la suavidad con la que cambia la luz de la tarde, usted se ha vuelto el centro de todas mis inspiraciones. Cada pensamiento parece encontrar la forma de regresar a usted. Su rostro, con esa belleza serena y casi irreal, se ha convertido en la silueta favorita de mi memoria, un refugio al que vuelvo constantemente cuando busco calma. Y sus labios… sus labios son una huella que no busco en lo efímero de la piel, sino algo mucho más hondo y permanente: <span class="marker-phrase">una marca que quiero llevar tatuada directamente en el alma, incluso antes de haberlos tocado.</span>
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- PÁRRAFO 6 (CIERRE ORIGINAL EN FONDO BLANCO) -->
-    <section class="letter-closing">
-      <div class="section-grid">
-        <div class="col-text-wide">
-          <div class="hairline-divider"></div>
-          <p class="letter-paragraph" data-reveal-paragraph>
-            <span class="marker-phrase">Feliz vuelta al sol, señorita.</span> Ojalá la vida sea generosa conmigo y me conceda el privilegio de seguir leyendo, página por página y sin afán, esta historia tan hermosa que apenas empiezo a descubrir en usted.
-          </p>
-        </div>
-      </div>
-
-      <div class="closing-grid">
-        <div>
-          <h2 class="closing-monumental">
-            Feliz vuelta<br />al <em>sol</em>.
-          </h2>
-        </div>
-
-        <figure class="ascii-photo-card" data-parallax="-0.03">
-          <canvas class="ascii-canvas" data-flower="calla-bouquet"></canvas>
-          <figcaption class="ascii-meta">
-            <span><span class="green-dot"></span>ALCATRACES EN LUZ · IV</span>
-            <span>PARA ASHLEY</span>
-          </figcaption>
-        </figure>
-      </div>
-    </section>
-
-  </main>
+  <!-- Espaciador invisible que otorga la altura real al scroll nativo -->
+  <div id="scroll-spacer" class="w-full pointer-events-none"></div>
 
   <script>
-    /* ==========================================================================
-       1. PARTICIÓN DE PALABRAS PRESERVANDO LOS SUBRAYADOS (.marker-phrase)
-       ========================================================================== */
-    function splitTextIntoWords() {
-      const paragraphs = document.querySelectorAll('[data-reveal-paragraph]');
+    // =========================================================================
+    // 1. PREPARACIÓN DE PALABRAS PARA REVELADO KINETIC (BLUR + OPACITY + Y)
+    // =========================================================================
+    const paragraphs = document.querySelectorAll('.kinetic-paragraph');
+    const allWordItems = [];
+    const highlightSpans = [];
 
-      paragraphs.forEach((p) => {
-        const wrapNodeWords = (node) => {
-          if (node.nodeType === Node.TEXT_NODE) {
-            const parts = node.textContent.split(/(\s+)/);
-            const frag = document.createDocumentFragment();
-            parts.forEach((part) => {
-              if (!part) return;
-              if (/^\s+$/.test(part)) {
-                frag.appendChild(document.createTextNode(part));
-              } else {
-                const span = document.createElement('span');
-                span.className = 'word-unit';
-                span.textContent = part;
-                frag.appendChild(span);
-              }
-            });
-            return frag;
-          } else if (node.nodeType === Node.ELEMENT_NODE) {
-            const clone = node.cloneNode(false);
-            Array.from(node.childNodes).forEach((child) => {
-              clone.appendChild(wrapNodeWords(child));
-            });
-            return clone;
-          }
-          return node.cloneNode(true);
-        };
+    paragraphs.forEach((p) => {
+      const childNodes = Array.from(p.childNodes);
+      p.innerHTML = '';
 
-        const rebuilt = document.createDocumentFragment();
-        Array.from(p.childNodes).forEach((child) => {
-          rebuilt.appendChild(wrapNodeWords(child));
-        });
-        p.innerHTML = '';
-        p.appendChild(rebuilt);
+      childNodes.forEach((node) => {
+        if (node.nodeType === Node.TEXT_NODE) {
+          const words = node.textContent.split(/(\s+)/);
+          words.forEach((token) => {
+            if (token.trim().length === 0) {
+              p.appendChild(document.createTextNode(token));
+            } else {
+              const span = document.createElement('span');
+              span.className = 'k-word';
+              span.textContent = token;
+              p.appendChild(span);
+              allWordItems.push({ el: span, top: 0 });
+            }
+          });
+        } else if (node.nodeType === Node.ELEMENT_NODE) {
+          const wrapper = node.cloneNode(false);
+          const innerWords = node.textContent.split(/(\s+)/);
+          innerWords.forEach((token) => {
+            if (token.trim().length === 0) {
+              wrapper.appendChild(document.createTextNode(token));
+            } else {
+              const span = document.createElement('span');
+              span.className = 'k-word';
+              span.textContent = token;
+              wrapper.appendChild(span);
+              allWordItems.push({ el: span, top: 0 });
+            }
+          });
+          p.appendChild(wrapper);
+          highlightSpans.push({ el: wrapper, top: 0 });
+        }
       });
-    }
+    });
 
-    splitTextIntoWords();
-
-    /* ==========================================================================
-       2. ANIMACIÓN SUAVE LIGADA AL SCROLL (PALABRAS, LÍNEAS Y SUBRAYADOS)
-       ========================================================================== */
-    const threadPath = document.getElementById('scrollThread');
-    const threadLength = threadPath.getTotalLength ? threadPath.getTotalLength() : 1400;
-    threadPath.style.strokeDasharray = threadLength;
-    threadPath.style.strokeDashoffset = threadLength;
-
-    const paragraphBlocks = Array.from(document.querySelectorAll('[data-reveal-paragraph]')).map((el) => ({
+    const parallaxTiles = Array.from(document.querySelectorAll('.parallax-tile')).map((el) => ({
       el,
-      words: Array.from(el.querySelectorAll('.word-unit')),
-      markers: Array.from(el.querySelectorAll('.marker-phrase')),
-      divider: el.parentElement.querySelector('.hairline-divider')
+      speed: parseFloat(el.dataset.speed || '-0.1'),
+      rot: parseFloat(el.dataset.rot || '2'),
+      top: 0,
+      height: 0
     }));
 
-    const parallaxCards = Array.from(document.querySelectorAll('[data-parallax]'));
+    // =========================================================================
+    // 2. MOTOR DE ARTE FOTOGRÁFICO-BOTÁNICO EN MATRIZ ASCII
+    // =========================================================================
+    // Rampa de luminancia fotográfica convertida a caracteres tipográficos
+    const ASCII_RAMP = ' .`^",:;Il!i><~+_-?][}{1)(|/tfjrxnuvczXYUJCLQ0OZmwqpdbkhao*#MW&8%B@$';
 
-    let smoothScrollY = window.scrollY;
-    let targetScrollY = window.scrollY;
+    const asciiCanvases = Array.from(document.querySelectorAll('.ascii-canvas')).map((canvasEl) => {
+      const ctx = canvasEl.getContext('2d');
+      return {
+        canvas: canvasEl,
+        ctx,
+        type: canvasEl.dataset.flower || 'calla-single',
+        cols: 0,
+        rows: 0,
+        cellW: 7,
+        cellH: 11,
+        width: 0,
+        height: 0
+      };
+    });
 
-    window.addEventListener('scroll', () => {
-      targetScrollY = window.scrollY;
-    }, { passive: true });
+    function setupAsciiPlates() {
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      asciiCanvases.forEach((plate) => {
+        const rect = plate.canvas.parentElement.getBoundingClientRect();
+        plate.width = Math.max(200, rect.width);
+        plate.height = Math.max(220, rect.height);
+        plate.canvas.width = plate.width * dpr;
+        plate.canvas.height = plate.height * dpr;
+        plate.ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
-    function updateScrollChoreography() {
-      smoothScrollY += (targetScrollY - smoothScrollY) * 0.1;
-
-      const vh = window.innerHeight;
-      const maxScroll = Math.max(1, document.documentElement.scrollHeight - vh);
-      const globalProgress = Math.min(1, Math.max(0, smoothScrollY / maxScroll));
-
-      // Dibujo progresivo del hilo caligráfico
-      threadPath.style.strokeDashoffset = threadLength * (1 - globalProgress);
-
-      // Revelado progresivo de cada párrafo mientras entra en pantalla
-      paragraphBlocks.forEach((block) => {
-        const rect = block.el.getBoundingClientRect();
-        const startTrigger = vh * 0.88;
-        const endTrigger = vh * 0.30;
-        const progress = (startTrigger - rect.top) / (startTrigger - endTrigger);
-        const clamped = Math.max(0, Math.min(1, progress));
-
-        if (block.divider && clamped > 0.04) {
-          block.divider.classList.add('drawn');
-        }
-
-        const totalWords = block.words.length;
-        const activeCount = Math.floor(clamped * totalWords);
-
-        block.words.forEach((w, idx) => {
-          if (idx <= activeCount || clamped >= 0.96) {
-            w.classList.add('revealed');
-          } else {
-            w.classList.remove('revealed');
-          }
-        });
-
-        block.markers.forEach((m) => {
-          if (clamped > 0.72) {
-            m.classList.add('lit');
-          } else {
-            m.classList.remove('lit');
-          }
-        });
+        plate.cellW = 6.2;
+        plate.cellH = 10.2;
+        plate.cols = Math.floor(plate.width / plate.cellW);
+        plate.rows = Math.floor(plate.height / plate.cellH);
       });
-
-      // Parallax sutil para las láminas florales ASCII
-      parallaxCards.forEach((card) => {
-        const speed = parseFloat(card.dataset.parallax || '0');
-        const rect = card.getBoundingClientRect();
-        const centerOffset = rect.top + rect.height * 0.5 - vh * 0.5;
-        card.style.transform = `translate3d(0, ${centerOffset * speed}px, 0)`;
-      });
-
-      requestAnimationFrame(updateScrollChoreography);
     }
 
-    requestAnimationFrame(updateScrollChoreography);
+    // Evalúa el campo de intensidad luminosa de una flor botánica según el tipo de lámina
+    function sampleFlowerDensity(type, nx, ny, time, scrollOffset) {
+      // Oscilación orgánica de brisa sobre el tallo y los pétalos
+      const sway = Math.sin(time * 1.1 + ny * 2.4 + scrollOffset * 0.002) * 0.045 * (1 - ny * 0.4);
+      const x = nx + sway;
+      const y = ny;
 
-    /* ==========================================================================
-       3. RENDERIZADOR DE FOTOGRAFÍAS DE FLORES EN ESTILO ASCII (SOBRE #FAFFFA)
-       ========================================================================== */
-    const ASCII_RAMP = [' ', '·', '.', ':', '-', '=', '+', '*', 'o', '#', '%', '@'];
+      let density = 0;
+      let isPistilGreen = false;
 
-    class AsciiFlowerRenderer {
-      constructor(canvas) {
-        this.canvas = canvas;
-        this.ctx = canvas.getContext('2d');
-        this.type = canvas.dataset.flower || 'calla-single';
-        this.mouse = { x: -999, y: -999 };
-        this.timeOffset = Math.random() * 100;
+      if (type === 'calla-single') {
+        // Cáliz escultural de alcatraz (espata envolvente con sombreado volumétrico)
+        const cx = 0;
+        const cy = -0.12;
+        const dx = x - cx;
+        const dy = y - cy;
 
-        this.canvas.addEventListener('mousemove', (e) => {
-          const r = this.canvas.getBoundingClientRect();
-          this.mouse.x = (e.clientX - r.left) / r.width;
-          this.mouse.y = (e.clientY - r.top) / r.height;
-        });
+        // Forma acampanada de alcatraz
+        const cupWidth = Math.max(0.04, 0.36 * (0.65 - dy));
+        const distCup = Math.abs(dx) / cupWidth;
 
-        this.canvas.addEventListener('mouseleave', () => {
-          this.mouse.x = -999;
-          this.mouse.y = -999;
-        });
+        if (dy > -0.58 && dy < 0.42 && distCup < 1.0) {
+          // Sombreado fotográfico: bordes más densos y pliegue central suave
+          const rim = Math.pow(distCup, 1.35);
+          const verticalGrad = 1 - Math.abs(dy + 0.08) * 1.15;
+          density = Math.max(0, (0.35 + rim * 0.65) * verticalGrad);
 
-        this.resize();
-        window.addEventListener('resize', () => this.resize());
-      }
-
-      resize() {
-        const dpr = Math.min(window.devicePixelRatio || 1, 2);
-        const rect = this.canvas.getBoundingClientRect();
-        this.width = rect.width || 420;
-        this.height = rect.height || 360;
-        this.canvas.width = this.width * dpr;
-        this.canvas.height = this.height * dpr;
-        this.ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-
-        this.cellW = 7.4;
-        this.cellH = 11.2;
-        this.cols = Math.floor(this.width / this.cellW);
-        this.rows = Math.floor(this.height / this.cellH);
-      }
-
-      // Evalúa la luminancia fotográfica sintética de un alcatraz / flor botánica
-      sampleCallaLily(nx, ny, cx, cy, scale, tilt, t) {
-        const sway = Math.sin(t * 1.1 + ny * 2.4) * 0.025;
-        const dx = (nx - cx) / scale;
-        const dy = (ny - cy) / scale;
-
-        const cosA = Math.cos(tilt + sway);
-        const sinA = Math.sin(tilt + sway);
-        const rx = dx * cosA - dy * sinA;
-        const ry = dx * sinA + dy * cosA;
-
-        let intensity = 0;
-        let isSpadix = false;
-
-        // Cáliz / Espata escultórica del alcatraz (forma de trompeta envolvente)
-        const cupY = ry + 0.12;
-        if (cupY > -0.62 && cupY < 0.45) {
-          const v = (cupY + 0.62) / 1.07; // 0 arriba, 1 base del cáliz
-          const halfWidth = 0.44 * Math.sin(Math.pow(1 - v, 0.78) * Math.PI * 0.88) + 0.05;
-          const distFromAxis = Math.abs(rx - Math.sin(v * Math.PI) * 0.04);
-
-          if (distFromAxis < halfWidth) {
-            const edgeFactor = distFromAxis / halfWidth;
-            // Sombreado volumétrico tipo fotografía de estudio en blanco y negro
-            const fold = Math.cos(edgeFactor * Math.PI * 0.5);
-            const rimLight = Math.pow(edgeFactor, 2.2) * 0.95;
-            const verticalGrad = 1.0 - v * 0.45;
-            intensity = Math.max(intensity, (fold * 0.62 + rimLight * 0.55) * verticalGrad);
-
-            // Labio superior curvado del alcatraz
-            if (v < 0.25) {
-              intensity += (0.25 - v) * 0.9;
-            }
+          // Labio superior curvado de la espata
+          const lipCurve = -0.42 + Math.cos(dx * 5.2) * 0.12;
+          if (Math.abs(dy - lipCurve) < 0.09) {
+            density = Math.min(1, density + 0.38);
           }
         }
 
-        // Espádice central (pistilo luminoso del alcatraz)
-        const spadixX = rx - 0.01;
-        const spadixY = ry + 0.22;
-        if (spadixY > -0.36 && spadixY < 0.08 && Math.abs(spadixX) < 0.042) {
-          intensity = 1.0;
-          isSpadix = true;
+        // Espádice central (pistilo en Highlighter Green #2bee4b)
+        if (Math.abs(dx - 0.02) < 0.036 && dy > -0.40 && dy < 0.08) {
+          density = 0.92;
+          isPistilGreen = true;
         }
 
-        // Tallo botánico curvo
-        if (ry >= 0.28 && ry < 1.05) {
-          const stemCurve = Math.sin((ry - 0.28) * 3.2) * 0.045;
-          const distStem = Math.abs(rx - stemCurve);
-          if (distStem < 0.048) {
-            const stemShade = 1 - distStem / 0.048;
-            intensity = Math.max(intensity, stemShade * 0.58);
+        // Tallo botánico curvado inferior
+        const stemCenter = Math.sin((y - 0.3) * 3.2) * 0.06;
+        if (y >= 0.35 && Math.abs(x - stemCenter) < 0.042) {
+          density = Math.max(density, 0.68 - Math.abs(x - stemCenter) * 12);
+        }
+      } else if (type === 'cosmos-bloom') {
+        // Flor abierta en vista frontal con 8 pétalos sombreados
+        const dx = x;
+        const dy = y + 0.08;
+        const r = Math.sqrt(dx * dx + dy * dy);
+        const angle = Math.atan2(dy, dx) + Math.sin(time * 0.5) * 0.08;
+
+        const petalMod = 0.52 + 0.24 * Math.cos(angle * 8) + 0.06 * Math.sin(angle * 16);
+        if (r < petalMod && r > 0.09) {
+          const normR = r / petalMod;
+          const striations = 0.8 + 0.2 * Math.cos(angle * 32);
+          density = (1 - Math.pow(normR, 2.2) * 0.45) * striations;
+        } else if (r <= 0.11) {
+          // Corazón de polen en verde neón
+          density = 0.95;
+          isPistilGreen = true;
+        }
+
+        // Tallo fino y hoja lateral
+        if (y > 0.28 && Math.abs(x - (y - 0.28) * 0.14) < 0.032) {
+          density = Math.max(density, 0.58);
+        }
+      } else if (type === 'calla-duet') {
+        // Dos alcatraces entrelazados a distinta altura
+        const flowers = [
+          { ox: -0.22, oy: -0.18, sc: 0.78, tilt: -0.18 },
+          { ox: 0.22, oy: 0.04, sc: 0.72, tilt: 0.22 }
+        ];
+
+        flowers.forEach((f) => {
+          const rx = (x - f.ox) * Math.cos(f.tilt) - (y - f.oy) * Math.sin(f.tilt);
+          const ry = (x - f.ox) * Math.sin(f.tilt) + (y - f.oy) * Math.cos(f.tilt);
+          const lx = rx / f.sc;
+          const ly = ry / f.sc;
+
+          const w = Math.max(0.03, 0.34 * (0.62 - ly));
+          const d = Math.abs(lx) / w;
+          if (ly > -0.55 && ly < 0.40 && d < 1.0) {
+            const val = (0.3 + Math.pow(d, 1.4) * 0.7) * (1 - Math.abs(ly) * 0.9);
+            if (val > density) density = val;
+          }
+          if (Math.abs(lx) < 0.038 && ly > -0.36 && ly < 0.06) {
+            density = 0.94;
+            isPistilGreen = true;
+          }
+        });
+
+        // Tallos convergentes
+        if (y > 0.22 && Math.abs(Math.abs(x) - (0.24 - (y - 0.22) * 0.28)) < 0.035) {
+          density = Math.max(density, 0.56);
+        }
+      } else {
+        // 'lily-crown': Lirio imperial / sello botánico simétrico para el cierre
+        const dx = x;
+        const dy = y + 0.04;
+        const r = Math.sqrt(dx * dx + dy * dy);
+        const angle = Math.atan2(dy, dx);
+
+        const crownShape = 0.48 + 0.28 * Math.cos(angle * 6);
+        if (r < crownShape) {
+          const innerRing = Math.abs(r - 0.22) < 0.035;
+          density = (0.35 + (r / crownShape) * 0.62);
+          if (innerRing || r < 0.075) {
+            density = 0.92;
+            isPistilGreen = true;
           }
         }
-
-        return { intensity: Math.min(1, intensity), isSpadix };
       }
 
-      sampleLotusBloom(nx, ny, t) {
-        const dx = nx - 0.5;
-        const dy = (ny - 0.48) * 1.12;
-        const r = Math.hypot(dx, dy);
-        const angle = Math.atan2(dy, dx) + Math.sin(t * 0.5) * 0.08;
+      return { density: Math.min(1, Math.max(0, density)), isPistilGreen };
+    }
 
-        let intensity = 0;
-        let isSpadix = false;
+    function renderAsciiPlates(time, scrollPos) {
+      asciiCanvases.forEach((plate) => {
+        const { ctx, cols, rows, cellW, cellH, width, height, type } = plate;
+        if (!cols || !rows) return;
 
-        // Corola de pétalos superpuestos con iluminación fotográfica
-        const petalWave1 = Math.cos(angle * 6) * 0.11 + 0.28;
-        const petalWave2 = Math.sin(angle * 6 + 0.5) * 0.09 + 0.20;
-
-        if (r < petalWave1) {
-          const normR = r / petalWave1;
-          const petalRib = Math.abs(Math.cos(angle * 6));
-          intensity = (1 - normR * 0.55) * (0.45 + petalRib * 0.55);
-        }
-        if (r < petalWave2) {
-          intensity = Math.min(1, intensity + 0.28);
-        }
-
-        // Centro de estambres (acento verde neón #2bee4b)
-        if (r < 0.065) {
-          intensity = 1;
-          isSpadix = true;
-        }
-
-        // Tallo fino inferior
-        if (ny > 0.62 && Math.abs(dx - Math.sin(ny * 5 + t) * 0.02) < 0.018) {
-          intensity = Math.max(intensity, 0.5);
-        }
-
-        return { intensity, isSpadix };
-      }
-
-      render(time) {
-        const t = time * 0.001 + this.timeOffset;
-        const ctx = this.ctx;
-
-        // Fondo Bone White (#fafffa) limpio
-        ctx.fillStyle = '#fafffa';
-        ctx.fillRect(0, 0, this.width, this.height);
-
-        ctx.font = `400 10.5px "JetBrains Mono", monospace`;
+        ctx.clearRect(0, 0, width, height);
+        ctx.font = '400 9.5px "JetBrains Mono", monospace';
         ctx.textBaseline = 'top';
 
-        for (let r = 0; r < this.rows; r++) {
-          const ny = r / this.rows;
-          for (let c = 0; c < this.cols; c++) {
-            const nx = c / this.cols;
+        for (let r = 0; r < rows; r++) {
+          const ny = (r / rows) * 2 - 1;
+          for (let c = 0; c < cols; c++) {
+            const nx = (c / cols) * 2 - 1;
 
-            // Suave ondulación interactiva si el cursor pasa sobre la foto ASCII
-            const mdx = nx - this.mouse.x;
-            const mdy = ny - this.mouse.y;
-            const mDist = Math.hypot(mdx, mdy);
-            const ripple = mDist < 0.22 ? (0.22 - mDist) * 0.18 : 0;
+            // Bordes de viñeta sutil estilo placa fotográfica impresa
+            const edgeDist = Math.max(Math.abs(nx), Math.abs(ny));
+            const sample = sampleFlowerDensity(type, nx, ny, time, scrollPos);
 
-            let sample = { intensity: 0, isSpadix: false };
-
-            if (this.type === 'calla-single') {
-              sample = this.sampleCallaLily(nx + ripple, ny, 0.5, 0.52, 0.62, -0.08, t);
-            } else if (this.type === 'calla-duo') {
-              const s1 = this.sampleCallaLily(nx + ripple, ny, 0.37, 0.48, 0.54, -0.18, t);
-              const s2 = this.sampleCallaLily(nx - ripple, ny, 0.64, 0.56, 0.50, 0.16, t + 1.5);
-              sample = {
-                intensity: Math.max(s1.intensity, s2.intensity),
-                isSpadix: s1.isSpadix || s2.isSpadix
-              };
-            } else if (this.type === 'lotus-bloom') {
-              sample = this.sampleLotusBloom(nx + ripple, ny, t);
-            } else if (this.type === 'calla-bouquet') {
-              const b1 = this.sampleCallaLily(nx, ny, 0.32, 0.54, 0.46, -0.24, t);
-              const b2 = this.sampleCallaLily(nx, ny, 0.50, 0.45, 0.56, 0.02, t + 1.1);
-              const b3 = this.sampleCallaLily(nx, ny, 0.69, 0.55, 0.46, 0.22, t + 2.3);
-              sample = {
-                intensity: Math.max(b1.intensity, b2.intensity, b3.intensity),
-                isSpadix: b1.isSpadix || b2.isSpadix || b3.isSpadix
-              };
+            let d = sample.density;
+            if (d < 0.05 && edgeDist > 0.92 && (r + c) % 3 === 0) {
+              d = 0.12; // Puntillismo muy tenue en el marco
             }
 
-            // Trama sutil de fondo tipo grabado de imprenta
-            if (sample.intensity <= 0.04) {
-              if ((r + c) % 4 === 0) {
-                ctx.fillStyle = 'rgba(147, 183, 153, 0.28)';
-                ctx.fillText('·', c * this.cellW, r * this.cellH);
+            if (d > 0.04) {
+              // Brillo de caracteres reactivo al scroll
+              const shimmer = 0.04 * Math.sin(scrollPos * 0.015 + r * 0.5 + c * 0.3);
+              const finalD = Math.min(0.99, Math.max(0.02, d + shimmer));
+              const charIdx = Math.floor(finalD * (ASCII_RAMP.length - 1));
+              const ch = ASCII_RAMP[charIdx];
+
+              if (sample.isPistilGreen) {
+                ctx.fillStyle = '#2bee4b';
+              } else if (finalD > 0.62) {
+                ctx.fillStyle = '#121613';
+              } else {
+                ctx.fillStyle = 'rgba(81, 98, 84, 0.78)';
               }
-              continue;
-            }
 
-            const idx = Math.min(
-              ASCII_RAMP.length - 1,
-              Math.floor(sample.intensity * (ASCII_RAMP.length - 1))
-            );
-            const char = ASCII_RAMP[idx];
-
-            if (sample.isSpadix) {
-              // El pistilo de la flor brilla en Highlighter Green (#2bee4b) y tinta negra
-              ctx.fillStyle = '#2bee4b';
-              ctx.fillRect(c * this.cellW - 0.5, r * this.cellH, this.cellW + 1, this.cellH);
-              ctx.fillStyle = '#000000';
-              ctx.fillText('*', c * this.cellW, r * this.cellH);
-            } else {
-              // Tinta Press Black (#121613) y Newsprint Gray (#516254)
-              const alpha = 0.22 + sample.intensity * 0.78;
-              ctx.fillStyle = sample.intensity > 0.55
-                ? `rgba(18, 22, 19, ${alpha.toFixed(2)})`
-                : `rgba(81, 98, 84, ${alpha.toFixed(2)})`;
-              ctx.fillText(char, c * this.cellW, r * this.cellH);
+              ctx.fillText(ch, c * cellW, r * cellH);
             }
           }
         }
+      });
+    }
+
+    // =========================================================================
+    // 3. MOTOR DE SMOOTH SCROLL (LERP) Y MEDICIÓN DE COORDENADAS
+    // =========================================================================
+    const smoothWrapper = document.getElementById('smooth-wrapper');
+    const smoothContent = document.getElementById('smooth-content');
+    const scrollSpacer = document.getElementById('scroll-spacer');
+    const heroBlock = document.getElementById('hero-block');
+
+    const threadInk = document.getElementById('thread-ink');
+    const threadGreen = document.getElementById('thread-green');
+    let threadTotalLength = 0;
+
+    let currentScroll = 0;
+    let targetScroll = 0;
+    let maxScroll = 1;
+    let vh = window.innerHeight;
+    let vw = window.innerWidth;
+    let clock = 0;
+
+    function measureLayout() {
+      vh = window.innerHeight;
+      vw = window.innerWidth;
+
+      smoothWrapper.style.transform = 'translate3d(0px, 0px, 0px)';
+
+      const contentHeight = smoothContent.getBoundingClientRect().height;
+      scrollSpacer.style.height = `${contentHeight}px`;
+      maxScroll = Math.max(1, contentHeight - vh);
+
+      allWordItems.forEach((item) => {
+        const rect = item.el.getBoundingClientRect();
+        item.top = rect.top;
+      });
+
+      highlightSpans.forEach((item) => {
+        const rect = item.el.getBoundingClientRect();
+        item.top = rect.top;
+      });
+
+      parallaxTiles.forEach((item) => {
+        const rect = item.el.getBoundingClientRect();
+        item.top = rect.top;
+        item.height = rect.height;
+      });
+
+      if (threadInk && threadGreen) {
+        threadTotalLength = threadGreen.getTotalLength();
+        threadInk.style.strokeDasharray = `${threadTotalLength}`;
+        threadGreen.style.strokeDasharray = `${threadTotalLength}`;
       }
+
+      setupAsciiPlates();
+      smoothWrapper.style.transform = `translate3d(0px, ${-currentScroll}px, 0px)`;
     }
 
-    const asciiRenderers = Array.from(document.querySelectorAll('.ascii-canvas')).map(
-      (canvas) => new AsciiFlowerRenderer(canvas)
-    );
+    window.addEventListener('scroll', () => {
+      targetScroll = window.scrollY || window.pageYOffset;
+    }, { passive: true });
 
-    function animateAsciiPlates(now) {
-      asciiRenderers.forEach((renderer) => renderer.render(now));
-      requestAnimationFrame(animateAsciiPlates);
+    // =========================================================================
+    // 4. BUCLE PRINCIPAL DE ANIMACIÓN (SCROLL + TIPOGRAFÍA + FLORES ASCII)
+    // =========================================================================
+    function renderLoop() {
+      clock += 0.012;
+
+      // 1. Interpolación suave (Lerp) del scroll
+      currentScroll += (targetScroll - currentScroll) * 0.085;
+      smoothWrapper.style.transform = `translate3d(0px, ${-currentScroll.toFixed(2)}px, 0px)`;
+
+      // 2. Desvanecimiento sutil de la portada al iniciar el scroll
+      const heroProgress = Math.min(1, Math.max(0, currentScroll / (vh * 0.75)));
+      if (heroBlock) {
+        heroBlock.style.opacity = `${1 - heroProgress * 0.92}`;
+        heroBlock.style.transform = `translate3d(0px, ${heroProgress * 42}px, 0px)`;
+        heroBlock.style.filter = `blur(${(heroProgress * 7).toFixed(2)}px)`;
+      }
+
+      // 3. Dibujo orgánico del hilo caligráfico en SVG
+      if (threadTotalLength > 0) {
+        const scrollRatio = Math.min(1, Math.max(0, currentScroll / maxScroll));
+        const drawOffset = threadTotalLength * (1 - scrollRatio);
+        threadInk.style.strokeDashoffset = `${drawOffset}`;
+        threadGreen.style.strokeDashoffset = `${drawOffset}`;
+      }
+
+      // 4. Animación palabra por palabra (Blur 8px -> 0px, Opacity, TranslateY)
+      const enterStart = vh * 0.93;
+      const enterEnd = vh * 0.62;
+
+      for (let i = 0; i < allWordItems.length; i++) {
+        const item = allWordItems[i];
+        const screenY = item.top - currentScroll;
+
+        let p = (enterStart - screenY) / (enterStart - enterEnd);
+        p = Math.min(1, Math.max(0, p));
+
+        const eased = 1 - Math.pow(1 - p, 3);
+        const blurVal = (1 - eased) * 7.5;
+        const translateY = (1 - eased) * 16;
+        const alpha = 0.08 + eased * 0.92;
+
+        item.el.style.opacity = alpha.toFixed(3);
+        item.el.style.transform = `translate3d(0px, ${translateY.toFixed(1)}px, 0px)`;
+        item.el.style.filter = blurVal > 0.15 ? `blur(${blurVal.toFixed(2)}px)` : 'none';
+      }
+
+      // 5. Expansión de los subrayados en Highlighter Green (#2bee4b) al cruzar el centro
+      const hlStart = vh * 0.80;
+      const hlEnd = vh * 0.46;
+      for (let i = 0; i < highlightSpans.length; i++) {
+        const item = highlightSpans[i];
+        const screenY = item.top - currentScroll;
+        let hp = (hlStart - screenY) / (hlStart - hlEnd);
+        hp = Math.min(1, Math.max(0, hp));
+        item.el.style.setProperty('--hl-progress', hp.toFixed(3));
+      }
+
+      // 6. Láminas florales ASCII con Parallax diferencial y ligera rotación
+      for (let i = 0; i < parallaxTiles.length; i++) {
+        const tile = parallaxTiles[i];
+        const centerOffset = (tile.top + tile.height * 0.5 - currentScroll) - vh * 0.5;
+        const yShift = centerOffset * tile.speed;
+        const rotAngle = (centerOffset / vh) * tile.rot;
+        tile.el.style.transform = `translate3d(0px, ${yShift.toFixed(1)}px, 0px) rotate(${rotAngle.toFixed(2)}deg)`;
+      }
+
+      // 7. Renderizar las matrices de flores en ASCII sobre fondo Bone White
+      renderAsciiPlates(clock, currentScroll);
+
+      requestAnimationFrame(renderLoop);
     }
 
-    requestAnimationFrame(animateAsciiPlates);
+    // Inicialización y recálculo responsivo
+    window.addEventListener('resize', () => {
+      measureLayout();
+    });
+
+    window.onload = () => {
+      measureLayout();
+      if (document.fonts && document.fonts.ready) {
+        document.fonts.ready.then(measureLayout);
+      }
+      requestAnimationFrame(renderLoop);
+    };
   </script>
 </body>
-</html>
+</html>`
